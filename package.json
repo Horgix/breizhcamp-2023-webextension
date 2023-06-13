@@ -1,0 +1,36 @@
+{
+  "name": "breizhcamp-2023-webextension",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "scripts": {
+    "lint": "eslint --fix src",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "watch": "parcel watch src/manifest.json --host localhost --config @parcel/config-webextension",
+    "watch:firefox": "node ./bundlers/watch_firefox.js",
+    "build": "parcel build src/manifest.json --config @parcel/config-webextension",
+    "build:firefox": "node ./bundlers/build_firefox.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Nuuky/breizhcamp-2023-webextension.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Nuuky/breizhcamp-2023-webextension/issues"
+  },
+  "homepage": "https://github.com/Nuuky/breizhcamp-2023-webextension#readme",
+  "devDependencies": {
+    "@parcel/config-default": "^2.9.2",
+    "@parcel/config-webextension": "^2.9.2",
+    "@parcel/core": "^2.9.2",
+    "eslint": "^8.42.0",
+    "eslint-config-semistandard": "^17.0.0",
+    "eslint-config-standard": "^17.1.0",
+    "eslint-plugin-import": "^2.27.5",
+    "eslint-plugin-n": "^16.0.0",
+    "eslint-plugin-promise": "^6.1.1",
+    "parcel": "^2.9.2"
+  }
+}

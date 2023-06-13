@@ -1,0 +1,25 @@
+{
+    "manifest_version": 3,
+    "name": "Base template",
+    "description": "Foo",
+    "version": "1.0.0",
+    "permissions": [],
+    "host_permissions": [
+    	"*://*.example.org/*"
+    ],
+    "background": {
+      "service_worker": "background/index.js",
+      "type": "module"
+    },
+    "constent-script": {
+      "content_scripts": [
+        {
+          "matches": ["*://*.example.org/*"],
+          "js": ["content-script/index.js"]
+        }
+      ]
+    },
+    "action": {
+        "default_popup": "popup/index.html"
+    }
+}
