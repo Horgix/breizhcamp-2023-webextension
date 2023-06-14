@@ -1,1 +1,3 @@
-console.log('Background script !')
+(() => {
+    console.log('Background script !')
+})()
