@@ -11,14 +11,12 @@
       "service_worker": "background/index.js",
       "type": "module"
     },
-    "constent-script": {
-      "content_scripts": [
+    "content_scripts": [
         {
           "matches": ["*://*.example.org/*"],
           "js": ["content-script/index.js"]
         }
-      ]
-    },
+      ],
     "action": {
         "default_popup": "popup/index.html"
     }
