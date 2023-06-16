@@ -1,45 +1,126 @@
 <!-- .slide: data-background="#FFF" class="cover" -->
 
-# slideshow markdown<!-- .element: class="title" -->
+# Création d'une webextension<!-- .element: class="title" -->
 
-## reveal-orange-boilerplate <!-- .element: class="title" -->
+## Breizhcamp 2023 <!-- .element: class="title" -->
 
-John Doe - author of the slideshow <!-- .element: class="author" -->
+Aurélien Partiot, Florent Vuillemin <!-- .element: class="author" -->
 
-Jane Doe - coauthor of the slideshow <!-- .element: class="author" -->
-
-01/01/1970 <!-- .element: class="date" -->
+28/06/2023 <!-- .element: class="date" -->
 
 ![logo Orange](images/logo.svg)
 
 ---
 <!-- .slide: class="plan" data-background="./images/paper-board_o10.png" -->
 
-# plan
+# Plan
 
-1. rich text
-2. rich content
-3. advanced features
+1. Introduction et mise en place
+2. Le content-script
+3. Menu contextuel
+4. Background script
+5. Browser action (icône)
 
 ---
 <!-- .slide: data-background="#000" class="chapter" -->
 
-# rich text
-
-examples
+# Introduction <!-- .element: class="r-fit-text" -->
 
 --
 
-# title of a slide
+## Historique des navigateurs
 
-## subtitle of a slide
+En quelques dates clés
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac nisl nec lectus consequat laoreet a nec urna. Aenean
-turpis odio, aliquet vitae ante non, varius rutrum massa. Etiam faucibus laoreet ligula et porttitor. Donec et lorem
-sapien.
+--
 
-Nam mattis est ligula. Quisque faucibus lorem et fringilla pretium. Proin lacinia diam id magna imperdiet, feugiat
-iaculis est luctus. Mauris et sodales ipsum.
+## Développement des extensions
+
+En quelques dates clés
+
+--
+
+## Manifests - la guerre des versions
+
+![](images/manifests-versions.png)
+
+--
+
+## Manifests - v2 vs v3
+
+|Feature       | v2      | v3      |
+|--------------|---------------|---------------|
+|line 1 cell 1 | line 1 cell 2 | line 1 cell 3 |
+
+--
+
+## Et sur mobile ?
+
+TODO
+
+---
+<!-- .slide: data-background="#000" class="chapter" -->
+
+# Let's get started! <!-- .element: class="r-fit-text" -->
+
+--
+
+# Pré-requis
+
+## NodeJS
+
+➡️ https://nodejs.org/en/download
+
+* Windows - MSI ou ZIP
+* MacOS
+* Linux
+* Docker
+
+## Git
+
+Selon votre système d'exploitation
+
+--
+
+# `manifest.json`- la base
+
+```json [2-4|5-9|11-16]
+{
+  "manifest_version": 2,
+  "name": "Borderify",
+  "version": "1.0",
+  "description": "Adds a solid red border to all webpages matching mozilla.org.",
+  "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/borderify",
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.mozilla.org/*"],
+      "js": ["borderify.js"]
+    }
+  ]
+}
+```
+
+💻 [https://github.com/mdn/webextensions-examples/blob/main/borderify/manifest.json](https://github.com/mdn/webextensions-examples/blob/main/borderify/manifest.json)
+
+--
+
+# Premier test
+
+## Récupérer les sources de la formation
+
+```sh
+git clone https://github.com/Nuuky/breizhcamp-2023-webextension.git
+```
+
+## Lancer le build automatique
+
+TODO
+
+-- 
 
 ## another subtitle of a slide
 
