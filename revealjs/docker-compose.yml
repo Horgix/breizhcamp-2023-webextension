@@ -7,7 +7,6 @@ services:
     image: reveal-orange-boilerplate
     volumes:
       - ./index.html:/reveal/index.html
-      - ./markdown.html:/reveal/markdown.html
       - ./markdown.md:/reveal/markdown.md
       - ./slides:/reveal/slides
       - ./images:/reveal/images
