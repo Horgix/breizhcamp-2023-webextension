@@ -1,1 +1,3 @@
-console.log('Content Script !!!')
+(() => {
+    console.log('Content Script !!!')
+})()
