@@ -1,0 +1,38 @@
+{
+  "debug": false,
+  "tagFormat": "${version}",
+  "plugins": [
+    "@semantic-release/commit-analyzer",
+    "@semantic-release/release-notes-generator",
+    [
+      "@semantic-release/gitlab",
+      {
+        "gitlabUrl": "https://gitlab.tech.orange/",
+        "assets": [
+          {
+            "label": "reveal-orange-boilerplate-standalone.${nextRelease.version}.tar.gz",
+            "url": "https://gitlab.tech.orange/api/v4/projects/36589/packages/generic/reveal-orange-boilerplate-standalone/${nextRelease.version}/reveal-orange-boilerplate-standalone.${nextRelease.version}.tar.gz",
+            "type": "package"
+          }
+        ]
+      }
+    ],
+    "@semantic-release/changelog",
+    "@semantic-release/exec",
+    [
+      "@semantic-release/git",
+      {
+        "assets": [
+          "CHANGELOG.md",
+          "package.json",
+          "package-lock.json",
+          "npm-shrinkwrap.json"
+        ]
+      }
+    ]
+  ],
+  "branches": [
+    "main",
+    "master"
+  ]
+}

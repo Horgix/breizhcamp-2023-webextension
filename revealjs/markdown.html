@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>reveal-orange-boilerplate</title>
+
+		<meta name="description" content="A framework for easily creating beautiful presentations using HTML">
+		<meta name="author" content="Julien Ciais">
+
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+		<link rel="stylesheet" href="dist/reveal.css">
+
+		<!--load orange boosted  -->
+		<link rel="stylesheet" href="dist/boosted/css/boosted.css">
+		<link rel="stylesheet" href="dist/boosted/css/orange-helvetica.css">
+
+		<!--load orange theme -->
+		<link rel="stylesheet" href="dist/theme/orange.css" id="theme">
+
+		<!--load all Font Awesome styles -->
+		<link href="dist/fontawesome/css/all.min.css" rel="stylesheet">
+
+		<!--load orange reveal slides style -->
+		<link rel="stylesheet" href="dist/orange-boilerplate.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="plugin/highlight/monokai.css">
+
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<!-- Any section element inside of this container is displayed as a slide -->
+			<div class="slides">
+
+				<section data-markdown="markdown.md"
+					data-separator="^---"
+					data-separator-vertical="^--"
+					data-separator-notes="^Note:"
+					data-charset="utf-8">
+				</section>
+
+			</div>
+
+		</div>
+
+
+<!-- ========== -->
+<!-- scripts JS -->
+<!-- ========== -->
+		<script src="./dist/reveal.js"></script>
+		<script src="./plugin/markdown/markdown.js"></script>
+		<script src="./plugin/highlight/highlight.js"></script>
+		<script src="./plugin/notes/notes.js"></script>
+		<script src="./plugin/math/math.js"></script>
+
+		<script>
+
+			Reveal.initialize({
+				controls: true,
+				progress: true,
+				history: true,
+				center: false,
+				slideNumber: true,
+				// Transition style
+				transition: 'slide', // none/fade/slide/convex/concave/zoom
+
+				// Transition speed
+				transitionSpeed: 'default', // default/fast/slow
+
+				// Transition style for full page slide backgrounds
+				backgroundTransition: 'fade', // none/fade/slide/convex/concave/zoom
+
+				plugins: [ RevealMarkdown, RevealHighlight, RevealNotes, RevealMath.KaTeX ]
+			});
+
+		</script>
+
+	</body>
+</html>

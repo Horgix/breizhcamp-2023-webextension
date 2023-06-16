@@ -1,0 +1,16 @@
+---
+version: '3.4'
+
+services:
+  serve:
+    build: .
+    image: reveal-orange-boilerplate
+    volumes:
+      - ./index.html:/reveal/index.html
+      - ./markdown.html:/reveal/markdown.html
+      - ./markdown.md:/reveal/markdown.md
+      - ./slides:/reveal/slides
+      - ./images:/reveal/images
+    ports:
+      - "8000:8000"
+      - "35729:35729"

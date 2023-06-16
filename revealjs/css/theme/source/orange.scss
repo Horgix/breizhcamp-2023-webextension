@@ -1,0 +1,49 @@
+/**
+ * Orange Boosted theme for reveal.js.
+ */
+
+// Default mixins and settings -----------------
+@import "../template/mixins";
+@import "../template/settings";
+// ---------------------------------------------
+
+
+// Include theme-specific fonts
+// ...
+
+// Override theme settings (see ../template/settings.scss)
+$backgroundColor: #f6f6f6;
+$mainFont: 'Arial';
+$mainFontSize: 24px;
+$mainColor: #333;
+$blockMargin: 20px;
+$headingMargin: 0 0 20px 0;
+$headingFont: 'HelvNeueOrange';
+$headingColor: #ff6600;
+$headingLineHeight: 1.2;
+$headingLetterSpacing: normal;
+$headingTextTransform: none;
+$headingTextShadow: none;
+$headingFontWeight: normal;
+$heading1TextShadow: none;
+$heading1Size: 3.77em;
+$heading2Size: 2.11em;
+$heading3Size: 1.55em;
+$heading4Size: 1.0em;
+$codeFont: monospace;
+$linkColor: #ff6600;
+$linkColorHover: lighten($linkColor, 15%);
+$selectionBackgroundColor: lighten($linkColor, 25%);
+$selectionColor: #fff;
+
+
+// Change text colors against light slide backgrounds
+@include light-bg-text-color(#ff6600);
+
+
+// Theme template ------------------------------
+@import "../template/theme";
+// ---------------------------------------------
+
+
+

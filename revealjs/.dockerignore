@@ -1,0 +1,22 @@
+## Ignore all
+*
+
+## Dont rebuild on changes
+# !*.html
+# !*.md
+# !slides/
+# !images/
+
+## Whitelist
+!css/
+!dist/
+!examples/
+!favicon.ico
+!gulpfile.js
+!js/
+!package-lock.json
+!package.json
+!yarn.lock
+!plugin/
+!test/
+
