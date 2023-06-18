@@ -1,6 +1,6 @@
 <!-- .slide: data-background="#FFF" class="cover" -->
 
-# Création d'une webextension<!-- .element: class="title" -->
+# Développez votre première extension de naigateur<!-- .element: class="title" -->
 
 ## Breizhcamp 2023 <!-- .element: class="title" -->
 
@@ -10,7 +10,35 @@ Aurélien Partiot, Florent Vuillemin <!-- .element: class="author" -->
 
 ![logo Orange](images/logo.svg)
 
+--
+
+# Aurélien Partiot
+##
+
+<img src="images/aurelien.jpg" style="height: 150px;">
+
+
+* 
+* 
+* 
+
+-- 
+
+# Florent Vuillemin
+## Développeur d'outils de sécurité
+
+<img src="images/florent.jpg" style="height: 150px;">
+
+C, Go, Kotlin, Elm (de l'ATmea168 à Openshift)
+
+Traque les sites de phishing à ses heures perdues
+
+<a href="https://mamot.fr/@fvln">
+  <img src="images/mastodon.svg" style="height: 1em;"> @fvln@mamot.fr
+</a>
+
 ---
+
 <!-- .slide: class="plan" data-background="./images/paper-board_o10.png" -->
 
 # Plan
@@ -54,6 +82,30 @@ En quelques dates clés
 
 --
 
+# `manifest.json`- la base
+
+```json [2-4|5-9|11-16]
+{
+  "manifest_version": 2,
+  "name": "Borderify",
+  "version": "1.0",
+  "description": "Adds a solid red border to all webpages matching mozilla.org.",
+  "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/borderify",
+  "icons": {
+    "48": "icons/border-48.png"
+  },
+
+  "content_scripts": [
+    {
+      "matches": ["*://*.mozilla.org/*"],
+      "js": ["borderify.js"]
+    }
+  ]
+}
+```
+
+--
+
 ## Et sur mobile ?
 
 TODO
@@ -82,56 +134,100 @@ Selon votre système d'exploitation
 
 --
 
-# `manifest.json`- la base
-
-```json [2-4|5-9|11-16]
-{
-  "manifest_version": 2,
-  "name": "Borderify",
-  "version": "1.0",
-  "description": "Adds a solid red border to all webpages matching mozilla.org.",
-  "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/borderify",
-  "icons": {
-    "48": "icons/border-48.png"
-  },
-
-  "content_scripts": [
-    {
-      "matches": ["*://*.mozilla.org/*"],
-      "js": ["borderify.js"]
-    }
-  ]
-}
-```
-
-💻 [https://github.com/mdn/webextensions-examples/blob/main/borderify/manifest.json](https://github.com/mdn/webextensions-examples/blob/main/borderify/manifest.json)
-
---
-
 # Premier test
 
 ## Récupérer les sources de la formation
 
 ```sh
 git clone https://github.com/Nuuky/breizhcamp-2023-webextension.git
+cd breizhcamp-2023-webextension/0-template
 ```
 
-## Lancer le build automatique
+## Installer les packages node
 
-TODO
+```sh
+npm install
+```
 
--- 
-
-## another subtitle of a slide
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis ac nisl nec lectus consequat laoreet a nec urna. Aenean
-turpis odio, aliquet vitae ante non, varius rutrum massa. Etiam faucibus laoreet ligula et porttitor. Donec et lorem
-sapien. Nam mattis est ligula. Quisque faucibus lorem et fringilla pretium. Proin lacinia diam id magna imperdiet,
-feugiat iaculis est luctus. Mauris et sodales ipsum.
+* `parcel` : build/serve HTML/CSS/JS
+* `web-ext` : un outil en ligne de commande pour developper des extensions
+* `eslint` : un linter JS 
 
 --
 
-# rich text
+## Lancer le build pour Chrome
+
+```sh
+# Assembler l'extension dans dist/
+npm run build
+
+# Idem avec mise à jour automatique
+npm run watch
+```
+![Installation sous Chrome](images/chrome.png)
+
+* Charger l'extension non empaquetée
+* Sélectionner le dossier `dist/`
+
+--
+
+## Lancer le build pour Firefox
+
+```sh
+# Assembler l'extension dans dist/
+npm run build:firefox
+
+# Idem avec mise à jour automatique
+npm run watch:firefox
+
+# Lance un navigateur déjà outillé
+npm run dev:firefox
+```
+
+Quelques subtilités :
+* Parcel ne gère par le build d'extensions au format MV3 pour Firefox
+* Besoin de modifier à la marge le `manifest.json` au moment du build
+
+-- 
+
+# ça marche ?
+
+Alors c'est l'occasion de customiser votre `manifest.json` !
+
+---
+
+<!-- .slide: data-background="#000" class="chapter" -->
+
+# Le content-script <!-- .element: class="r-fit-text" -->
+
+--
+
+# Le content-script
+
+> Un script de contenu (content script en anglais) est une partie de votre extension qui s’exécute dans le contexte d’une page web donnée
+
+* Ce script a accès à tout le DOM, il est idéalement placé pour observer son contenu ou le modifier.
+
+* Il ne voit pas les variables définies par le javascript de la page, ni les bibliothèques chargées (jQuery...).
+  * Limite les conflits !
+  * Améliore la sécurité
+
+* Limitations : 
+  * ⛔ le content-script est désactivé sur les domaines sensibles comme https://accounts.firefox.com
+  * Il ne permet pas d'accéder à toute l'API WebExtension
+
+
+-- 
+
+# Le content-script
+
+## Votre premier choix
+
+| A | B |
+|-|-|
+| Ajouter des photos de dinosaures en background de chaque page | Remplacer les noms des personnes politiques par des noms de dinosaures |
+
+--
 
 You can format text to *italic* and **bold** emphasis.
 
