@@ -34,7 +34,7 @@ C, Go, Kotlin, Elm (de l'ATmea168 à Openshift)
 Traque les sites de phishing à ses heures perdues
 
 <a href="https://mamot.fr/@fvln">
-  <img src="images/mastodon.svg" style="height: 1em;"> @fvln@mamot.fr
+	<img src="images/mastodon.svg" style="height: 1em;"> @fvln@mamot.fr
 </a>
 
 ---
@@ -61,7 +61,7 @@ Traque les sites de phishing à ses heures perdues
 1. 1990: **WorldWideWeb** - Premier navigateur
 2. 1993: **NCSA Mosaic** - Premier navigateur à afficher des images (GIF et XBM)
 3. 1995: Création d'**Internet Exploreur**
-4. 2000:  **IE** gagne la guerre des navigateurs 😒
+4. 2000:	**IE** gagne la guerre des navigateurs 😒
 5. 2003: Création de **Mozilla Firefox**
 6. 2005: **IE** ⏬ vs **Firefox** ⏫
 7. 2008: Sortie de **Google Chrome**
@@ -87,7 +87,7 @@ Traque les sites de phishing à ses heures perdues
 
 ## Manifests - v2 vs v3
 
-|Feature       | v2      | v3      |
+|Feature			 | v2			| v3			|
 |--------------|---------------|---------------|
 |line 1 cell 1 | line 1 cell 2 | line 1 cell 3 |
 
@@ -97,21 +97,21 @@ Traque les sites de phishing à ses heures perdues
 
 ```json [2-4|5-9|11-16]
 {
-  "manifest_version": 2,
-  "name": "Borderify",
-  "version": "1.0",
-  "description": "Adds a solid red border to all webpages matching mozilla.org.",
-  "homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/borderify",
-  "icons": {
-    "48": "icons/border-48.png"
-  },
+	"manifest_version": 2,
+	"name": "Borderify",
+	"version": "1.0",
+	"description": "Adds a solid red border to all webpages matching mozilla.org.",
+	"homepage_url": "https://github.com/mdn/webextensions-examples/tree/master/borderify",
+	"icons": {
+		"48": "icons/border-48.png"
+	},
 
-  "content_scripts": [
-    {
-      "matches": ["*://*.mozilla.org/*"],
-      "js": ["borderify.js"]
-    }
-  ]
+	"content_scripts": [
+		{
+			"matches": ["*://*.mozilla.org/*"],
+			"js": ["borderify.js"]
+		}
+	]
 }
 ```
 
@@ -213,19 +213,41 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 --
 
-# Le content-script
+## Le content-script
 
 > Un script de contenu (content script en anglais) est une partie de votre extension qui s’exécute dans le contexte d’une page web donnée
 
 * Ce script a accès à tout le DOM, il est idéalement placé pour observer son contenu ou le modifier.
 
 * Il ne voit pas les variables définies par le javascript de la page, ni les bibliothèques chargées (jQuery...).
-  * Limite les conflits !
-  * Améliore la sécurité
+	* Améliore la sécurité (introduit dès le début de Chrome)
+	* Limite les conflits !
 
 * Limitations : 
-  * ⛔ le content-script est désactivé sur les domaines sensibles comme https://accounts.firefox.com
-  * Il ne permet pas d'accéder à toute l'API WebExtension
+	* ⛔ le content-script est désactivé sur les domaines sensibles comme https://accounts.firefox.com
+	* Il ne permet pas d'accéder à toute l'API WebExtension
+
+-- 
+
+## Le content-script
+
+* Documentation : [ <img src="images/chrome_icon.svg" style="height: 1em;"> Chrome](https://developer.chrome.com/docs/extensions/mv3/content_scripts/), [ <img src="images/firefox_icon.svg" style="height: 1em;"> Firefox](https://developer.mozilla.org/fr/docs/Mozilla/Add-ons/WebExtensions/Content_scripts)
+* Déclaration dans le manifest :
+```json
+{
+	"content_scripts": 
+	[{
+		"matches": ["<all_urls>"],
+		"js": ["content-script/index.js"]
+	}],
+}
+```
+
+* Permet d'injecter du JS, du CSS
+* Sur des sites/pages précises
+* Déclaration possible au runtime (demande de permissions à la volée*)
+
+*ou pas (voir [activeTab](https://developer.chrome.com/docs/extensions/mv3/manifest/activeTab/))
 
 
 -- 
@@ -234,11 +256,30 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 ## Votre premier choix
 
-| A | B |
+| DinoFacts | PoliDino |
 |-|-|
-| Ajouter des photos de dinosaures en background de chaque page | Remplacer les noms des personnes politiques par des noms de dinosaures |
+| Ajouter des anecdotes amusantes concernant les dinosaures sur chaque page |  Remplacer les noms des personnes politiques par des noms de dinosaures, une idée inspirée de <img src="https://addons.mozilla.org/user-media/addon_icons/2670/2670987-64.png?modified=0bc94733" style="height: 1em;"> [Proutify](https://addons.mozilla.org/fr/firefox/addon/proutify/) |
 
 --
+
+### Déclaration dans le manifest
+
+```json
+{
+	"content_scripts": [
+		{
+			"matches": ["<all_urls>"],
+			"js": ["content-script/index.js"]
+		}
+	],
+}
+```
+
+
+---
+
+---
+
 
 You can format text to *italic* and **bold** emphasis.
 
@@ -265,7 +306,7 @@ turpis odio, aliquet vitae ante non, varius rutrum massa. Etiam faucibus laoreet
 sapien. Nam mattis est ligula. Quisque faucibus lorem et fringilla pretium. Proin lacinia diam id magna imperdiet,
 feugiat iaculis est luctus. Mauris et sodales ipsum.
 
-|header 1      | header 2      | header 3      | header 4      |
+|header 1			| header 2			| header 3			| header 4			|
 |--------------|---------------|---------------|---------------|
 |line 1 cell 1 | line 1 cell 2 | line 1 cell 3 | line 1 cell 4 |
 |line 2 cell 1 | line 2 cell 2 <!-- .element: class="bggreen" --> | line 2 cell 3 | line 2 cell 4 |
@@ -294,20 +335,20 @@ You can add some code snippets in your presentation.
 ```java
 // call ajax to web elipi
 $.ajax({type:"GET",
-        url:"https://web-elipi.orange.fr/api/v1/address",
-        data:{q:adresse},
-        beforeSend:function(req){
-        req.setRequestHeader("token","FgR8...DvG6");
-        }
-        })
-        .done(function(data,textStatus,jqXHR){
-        var response=[...];
-        $('#responseWebElipi').text(response);
-        })
-        .fail(function(err){
-        var error=[...];
-        $('#responseWebElipi').text(error);
-        });
+				url:"https://web-elipi.orange.fr/api/v1/address",
+				data:{q:adresse},
+				beforeSend:function(req){
+				req.setRequestHeader("token","FgR8...DvG6");
+				}
+				})
+				.done(function(data,textStatus,jqXHR){
+				var response=[...];
+				$('#responseWebElipi').text(response);
+				})
+				.fail(function(err){
+				var error=[...];
+				$('#responseWebElipi').text(error);
+				});
 ```
 
 It is automatically highlighted!
@@ -319,11 +360,11 @@ It is automatically highlighted!
 ## ordered and unordered
 
 - list item
-    - sublist item
-    - sublist item
+		- sublist item
+		- sublist item
 - another list item
-    1. sublist item
-    1. sublist item
+		1. sublist item
+		1. sublist item
 
 --
 
@@ -368,34 +409,34 @@ Hit the next arrow...
 
 <div style="text-align:center">
 
-There's different types of fragments, like:  
+There's different types of fragments, like:	
 
-grow <!-- .element: class="fragment grow" -->  
+grow <!-- .element: class="fragment grow" -->	
 
-shrink <!-- .element: class="fragment shrink" -->  
+shrink <!-- .element: class="fragment shrink" -->	
 
-roll-in <!-- .element: class="fragment roll-in" -->  
+roll-in <!-- .element: class="fragment roll-in" -->	
 
 fade-out <!-- .element: class="fragment fade-out" -->
 
 <p>
-    <span style="display: inline-block;" class="fragment fade-right">fade-right, </span>
-    <span style="display: inline-block;" class="fragment fade-up">up, </span>
-    <span style="display: inline-block;" class="fragment fade-down">down, </span>
-    <span style="display: inline-block;" class="fragment fade-left">left</span>
+		<span style="display: inline-block;" class="fragment fade-right">fade-right, </span>
+		<span style="display: inline-block;" class="fragment fade-up">up, </span>
+		<span style="display: inline-block;" class="fragment fade-down">down, </span>
+		<span style="display: inline-block;" class="fragment fade-left">left</span>
 </p>
 
 <p class="fragment fade-in-then-out">fade-in-then-out</p>
 <p class="fragment fade-in-then-semi-out">fade-in-then-semi-out</p>
 
 <p>
-Highlight : <!-- .element: style="display: inline-block;" -->   
+Highlight : <!-- .element: style="display: inline-block;" -->	 
 
-red <!-- .element: class="fragment highlight-red" style="display: inline-block;" -->    
+red <!-- .element: class="fragment highlight-red" style="display: inline-block;" -->		
 
-blue <!-- .element: class="fragment highlight-blue" style="display: inline-block;" -->     
+blue <!-- .element: class="fragment highlight-blue" style="display: inline-block;" -->		 
 
-green <!-- .element: class="fragment highlight-green" style="display: inline-block;" -->  
+green <!-- .element: class="fragment highlight-green" style="display: inline-block;" -->	
 
 </p>
 
@@ -414,11 +455,11 @@ Oh hey, these are some notes. They'll be hidden in your presentation, but you ca
 window (hit 's' on your keyboard).
 
 - note 1
-    - item A
-    - item B
+		- item A
+		- item B
 - note 2
-    - item C
-    - item D
+		- item C
+		- item D
 
 ---
 <!-- .slide: data-background="#000" class="chapter" -->
@@ -451,10 +492,10 @@ window (hit 's' on your keyboard).
 ### marvelous list
 
 <ul>
-  <li>No order here</li>
-  <li>Or here</li>
-  <li>Or here</li>
-  <li>Or here</li>
+	<li>No order here</li>
+	<li>Or here</li>
+	<li>Or here</li>
+	<li>Or here</li>
 </ul>
 
 </div>
@@ -468,20 +509,20 @@ You can add some code snippets in your presentation.
 ```java
 // call ajax to web elipi
 $.ajax({type:"GET",
-        url:"https://web-elipi.orange.fr/api/v1/address",
-        data:{q:adresse},
-        beforeSend:function(req){
-        req.setRequestHeader("token","FgR8...DvG6");
-        }
-        })
-        .done(function(data,textStatus,jqXHR){
-        var response=[...];
-        $('#responseWebElipi').text(response);
-        })
-        .fail(function(err){
-        var error=[...];
-        $('#responseWebElipi').text(error);
-        });
+				url:"https://web-elipi.orange.fr/api/v1/address",
+				data:{q:adresse},
+				beforeSend:function(req){
+				req.setRequestHeader("token","FgR8...DvG6");
+				}
+				})
+				.done(function(data,textStatus,jqXHR){
+				var response=[...];
+				$('#responseWebElipi').text(response);
+				})
+				.fail(function(err){
+				var error=[...];
+				$('#responseWebElipi').text(error);
+				});
 ```
 
 </div>
