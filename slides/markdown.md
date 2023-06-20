@@ -259,21 +259,32 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 | DinoFacts | PoliDino |
 |-|-|
 | Ajouter des anecdotes amusantes concernant les dinosaures sur chaque page |  Remplacer les noms des personnes politiques par des noms de dinosaures, une idée inspirée de <img src="https://addons.mozilla.org/user-media/addon_icons/2670/2670987-64.png?modified=0bc94733" style="height: 1em;"> [Proutify](https://addons.mozilla.org/fr/firefox/addon/proutify/) |
+| Injection de CSS | Remplacement sur le domaine liberation.fr |
 
 --
 
-### Déclaration dans le manifest
+## Procédure
 
 ```json
 {
 	"content_scripts": [
 		{
 			"matches": ["<all_urls>"],
-			"js": ["content-script/index.js"]
+			"js": ["content-script/index.js"],
+			"css": ["content-script/index.css"],
+
 		}
 	],
 }
 ```
+
+### Déploiement
+
+|| Chrome | Firefox |
+|-|-|-|
+| Initialisation | npm run watch | npm run watch:firefox |
+| Lancement du navigateur | lancer chrome, installer l'extension | npm run dev:firefox |
+| Après modif du code | Recharger l'extension | Rechargement automatique |
 
 
 ---

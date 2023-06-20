@@ -1,0 +1,16 @@
+{
+    "manifest_version": 3,
+    "name": "PoliDino",
+    "description": "Remplace les noms des personnes politiques par des noms de dinosaures",
+    "version": "1.0.0",
+    "permissions": [],
+    "host_permissions": [
+    	"<all_urls>"
+    ],
+    "content_scripts": [
+        {
+          "matches": ["*://*.liberation.fr/*"],
+          "js": ["content-script/index.js"]
+        }
+      ]
+}
