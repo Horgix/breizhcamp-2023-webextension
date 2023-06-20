@@ -13,7 +13,7 @@ Aurélien Partiot, Florent Vuillemin <!-- .element: class="author" -->
 --
 
 # Aurélien Partiot
-##
+## Développeur IA
 
 <img src="images/aurelien.jpg" style="height: 150px;">
 
@@ -58,13 +58,24 @@ Traque les sites de phishing à ses heures perdues
 
 ## Historique des navigateurs
 
-En quelques dates clés
+1. 1990: **WorldWideWeb** - Premier navigateur
+2. 1993: **NCSA Mosaic** - Premier navigateur à afficher des images (GIF et XBM)
+3. 1995: Création d'**Internet Exploreur**
+4. 2000:  **IE** gagne la guerre des navigateurs 😒
+5. 2003: Création de **Mozilla Firefox**
+6. 2005: **IE** ⏬ vs **Firefox** ⏫
+7. 2008: Sortie de **Google Chrome**
+8. 2012: **Chrome** devient le navigateur le plus utilisé
 
 --
 
 ## Développement des extensions
 
-En quelques dates clés
+1. 2010: Ouverture du **Chrome Web Store**
+2. 2012: Plus de **750 millions** d'extension sur CWS
+3. 2017: Les extensions **Firefox** sont désormais largement compatibles avec celles de Chrome
+4. 2020: Microsoft reconstruit **Edge** avec Chromium
+5. 2020: Apple sort **Safari 14** qui copie l'API de chrome pour les extensions.
 
 --
 
