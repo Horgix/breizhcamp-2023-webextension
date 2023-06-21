@@ -1,7 +1,7 @@
 {
     "manifest_version": 3,
-    "name": "Base template",
-    "description": "Foo",
+    "name": "Tradino",
+    "description": "Affiche tous les textes de la page en langage Dino et remplace les titres par des paroles de Dinos",
     "version": "1.0.0",
     "permissions": [],
     "host_permissions": [
@@ -12,5 +12,12 @@
           "matches": ["<all_urls>"],
           "js": ["content-script/index.js"]
         }
-      ]
+      ],
+    "browser_specific_settings": {
+        "gecko": {
+            "id": "tradino@breizhcamp.org",
+            "strict_min_version": "42.0"
+        }
+    }
+      
 }

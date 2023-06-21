@@ -256,12 +256,12 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 ## Votre premier choix
 
-| DinoFacts | PoliDino |
-|-|-|
-| Ajouter des anecdotes amusantes concernant les dinosaures sur chaque page |  Remplacer les noms des personnes politiques par des noms de dinosaures, une idée inspirée de <img src="https://addons.mozilla.org/user-media/addon_icons/2670/2670987-64.png?modified=0bc94733" style="height: 1em;"> [Proutify](https://addons.mozilla.org/fr/firefox/addon/proutify/) |
-| Injection de CSS | Remplacement sur le domaine liberation.fr |
+| DinoFacts | PoliDino | Tradino |
+|-|-|-|
+| Ajoute des anecdotes amusantes concernant les dinosaures sur chaque page |  Remplace les noms des personnes politiques par des noms de dinosaures, une idée inspirée de <img src="https://addons.mozilla.org/user-media/addon_icons/2670/2670987-64.png?modified=0bc94733" style="height: 1em;"> [Proutify](https://addons.mozilla.org/fr/firefox/addon/proutify/) | Affiche tous les textes de la page en langage Dino et remplace les titres par des paroles de [Dinos](https://fr.wikipedia.org/wiki/Dinos_(rappeur)) |
+| Injection de CSS | Remplacement sur le domaine liberation.fr | Choc culturel |
 
-**Remarque :** Ces deux extensions fonctionnent sans exploiter les API du navigateur
+**Remarque :** Ces deux extensions fonctionnent sans exploiter les API du navigateur.
 
 --
 

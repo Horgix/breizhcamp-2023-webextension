@@ -27,7 +27,7 @@ function translator(word) {
     } else return baseWord + word.slice(1)
 }
 
-function paragrapheToDino(node) {
+function paragraphToDino(node) {
     const content = []
     for (const word of node.textContent.split(/\s/)) {
         if (word.length <= 1) continue
@@ -38,4 +38,4 @@ function paragrapheToDino(node) {
     node.textContent = content.join(' ')
 }
 
-document.querySelectorAll('p, a').forEach(node => getTextNode(node, paragrapheToDino))
+document.querySelectorAll('p, a').forEach(node => getTextNode(node, paragraphToDino))
