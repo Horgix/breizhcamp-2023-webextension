@@ -292,16 +292,72 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 # Live coding <!-- .element: class="r-fit-text" -->
 
-Retrouvez les versions corrigées dans le répertoire `content-script`
+💡 Retrouvez les versions corrigées dans le répertoire `content-script`
 
 --
 
+## Signature et distribution
 
-Montrer l'installation à partir d'un xpi signé pour voir s'il y a des différences au niveau des permissions.
+### <img src="images/firefox_icon.svg" style="height: 1em;"> Firefox
+
+* Créer un compte sur le [pôle développeurs de modules](https://addons.mozilla.org/fr/developers/)
+* Proposer un nouveau module
+* Choisir la publication :
+  - sur https://addons.mozilla.org
+  - en auto-distribution (voir la clé [`update_url`](https://extensionworkshop.com/documentation/manage/updating-your-extension/))
+* Packer l'extension et envoyer le fichier `.xpi` puis...
+
+-- 
+
+* Attendre la signature par Mozilla
+
+![Signature de l'extension](images/firefox-extension-signature.png)
+
+--
+
+### <img src="images/chrome_icon.svg" style="height: 1em;"> Chrome, edge
+
+* Créer un compte sur le [Chrome Web Store](https://developer.chrome.com/docs/webstore/register/)
+* Proposer un nouveau module sur le [Chrome Developer Dashboard](https://chrome.google.com/webstore/devconsole)
+* Packer l'extension et envoyer le fichier `.zip`
+* Choisir la visibilité sur le store :
+  - publique
+  - non listée
+  - privée (nécessite ajout des emails des utilisateurs)
+
+--
+
+![Chrome developer dashboard](images/chrome-extension-signature.png)
+
+---
+
+<!-- .slide: data-background="#000" class="chapter" -->
+
+# Le background-script <!-- .element: class="r-fit-text" -->
+
+_ou_ service worker (comme pour le web... mais pas tout à fait)
+
+--
+
+## Le service worker
+
+> Le _service worker_ permet de s'abonner et de réagir à des évènements émis par le navigateur, tels que la navigation vers une nouvelle page, la suppression d'un marque-page ou la fermeture d'un onglet.
+
+* Exécuté dans le contexte de la _background page_, pas dans celui d'une page web.
+
+* Démarré au besoin, déchargé lorsqu'il devient inactif
+
+* Communique 
+  * avec les autres composants de l'extension par envoi/réception de messages
+  * avec le navigateur par exécution de callbacks
 
 
 
 ---
+
+
+
+
 
 
 You can format text to *italic* and **bold** emphasis.
