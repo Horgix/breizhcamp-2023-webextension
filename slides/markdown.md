@@ -265,7 +265,7 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 --
 
-## Procédure
+### Mise à jour du manifest
 
 ```json
 {
@@ -288,7 +288,14 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 | Lancement du navigateur | lancer chrome, installer l'extension | npm run dev:firefox |
 | Après modif du code | Recharger l'extension | Rechargement automatique |
 
----
+--
+
+# Live coding <!-- .element: class="r-fit-text" -->
+
+Retrouvez les versions corrigées dans le répertoire `content-script`
+
+--
+
 
 Montrer l'installation à partir d'un xpi signé pour voir s'il y a des différences au niveau des permissions.
 

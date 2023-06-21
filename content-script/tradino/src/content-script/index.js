@@ -30,12 +30,19 @@ function translator(word) {
 function paragraphToDino(node) {
     const content = []
     for (const word of node.textContent.split(/\s/)) {
-        if (word.length <= 1) continue
+        if (word.length <= 1) {
+            // Inclut les signes de ponctuation
+            content.push(word)
+            continue
+        }
         const translatedWord = translator(word)
         content.push(translatedWord)
     } 
-    content[0] = content[0].slice(0, 1).toUpperCase() + content[0].slice(1)
-    node.textContent = content.join(' ')
+
+    if (content.length > 0) {
+        content[0] = content[0].slice(0, 1).toUpperCase() + content[0].slice(1)
+        node.textContent = content.join(' ')
+    }
 }
 
 document.querySelectorAll('p, a').forEach(node => getTextNode(node, paragraphToDino))
