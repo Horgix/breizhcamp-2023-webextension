@@ -10,7 +10,7 @@
     "content_scripts": [
         {
           "matches": ["<all_urls>"],
-          "js": ["content-script/index.js", "content-script/fun_facts.js"],
+          "js": ["content-script/index.js"],
           "css": ["content-script/index.css"]
         }
       ]
