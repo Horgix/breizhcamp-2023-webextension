@@ -4,11 +4,10 @@
     "description": "Foo",
     "version": "1.0.0",
     "permissions": [
-      "storage",
-      "management",
-      "tabs",
-      "activeTab",
-      "scripting"
+      "contextMenus",
+      "scripting",
+      "clipboardWrite",
+      "activeTab"
     ],
     "host_permissions": [
       "<all_urls>"
