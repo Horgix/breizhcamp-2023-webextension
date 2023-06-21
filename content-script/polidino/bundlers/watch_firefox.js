@@ -21,5 +21,5 @@ try {
     }
   })
 } catch (err) {
-  process.stderr.write(err.diagnostics)
+  console.error(err.diagnostics)
 }
