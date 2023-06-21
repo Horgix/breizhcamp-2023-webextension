@@ -261,6 +261,8 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 | Ajouter des anecdotes amusantes concernant les dinosaures sur chaque page |  Remplacer les noms des personnes politiques par des noms de dinosaures, une idée inspirée de <img src="https://addons.mozilla.org/user-media/addon_icons/2670/2670987-64.png?modified=0bc94733" style="height: 1em;"> [Proutify](https://addons.mozilla.org/fr/firefox/addon/proutify/) |
 | Injection de CSS | Remplacement sur le domaine liberation.fr |
 
+**Remarque :** Ces deux extensions fonctionnent sans exploiter les API du navigateur
+
 --
 
 ## Procédure
