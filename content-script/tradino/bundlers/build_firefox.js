@@ -12,5 +12,5 @@ try {
   mv3ChromeToFirefoxTransformer()
   process.stdout.write('✨ ' + prettifyLog(`Built ${bundles.length} bundles in ${timeTransformer(buildTime)}`))
 } catch (err) {
-  console.error(err)
+  process.stderr.write(err.diagnostics)
 }

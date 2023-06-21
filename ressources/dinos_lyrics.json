@@ -1,11 +1,11 @@
-const dinosLyrics = [
+[
     "J'peux pas aller chez l'bout-mara parce que j'ai peur du ciel",
     "J'peux pas aller chez l'psy parce que j'suis un mec de tess",
     "J'ai plein d'principes stupides que j'dois respecter",
     "Quand on m'demande pourquoi, j'réponds \"parce que c'est comme ça au quartier\"",
-    'Un peu innocent, un peu coupable',
-    'Chaque contrôle de police me rapproche de mon feat avec 2Pac',
-    'Dans mes rêves, y a des démons et des crop circle',
+    "Un peu innocent, un peu coupable",
+    "Chaque contrôle de police me rapproche de mon feat avec 2Pac",
+    "Dans mes rêves, y a des démons et des crop circle",
     "C'est sûr que j'ferais rien, j'reste de marbre comme les cercueils",
     "J'aimerai dire que j'suis à toi, que j't'aime et qu'tout sera jdid",
     "Mais toute l'Afrique sait qu'aucun homme n'est fidèle toute la vie",
@@ -23,15 +23,15 @@ const dinosLyrics = [
     "Avant, j'croyais qu'j'priais puis",
     "J'ai grandi et j'ai compris que tout c'que j'fais",
     "C'est récité des phrases que j'ai appris par cœur",
-    'Mon style est bipolaire, mon stylo bille pleure',
+    "Mon style est bipolaire, mon stylo bille pleure",
     "J'ai l'âge de la raison, j'ai envie d'respect, j'ai plus envie d'plaire",
-    'À notre âge, le trajet est encore long ',
+    "À notre âge, le trajet est encore long ",
     "Et j'mens comme un keuf quand j'dis qu'j'me sens outragé, c'est trash",
     "Même un cœur cassé peut donner l'amour",
-    'Comme une horloge cassée donne la bonne heure deux fois par jour',
+    "Comme une horloge cassée donne la bonne heure deux fois par jour",
     "J'suis tombé du camion ou du navire, on s'facilite la mort",
     "Quand on s'complique la vie mais l'bonheur est dans les choses simples",
-    'Le morale est dans les chaussettes, yeah',
+    "Le morale est dans les chaussettes, yeah",
     "J'ferme les yeux et j'observe avec mes oreilles",
     "J'ai b'soin d'me confier mais pour l'admettre, j'suis bien trop fier",
     "Depuis combien d'temps on fuit? Depuis combien d'temps on court?",
@@ -59,7 +59,7 @@ const dinosLyrics = [
     "Les narines épatées, j'fais peur à la ce-Fran, pourtant, j'suis l'gentil du quartier",
     "Laisser la porte ouverte, c'est encore pire que d'la claquer",
     "Mais l'bonheur est dans les choses simples (le bonheur est dans les)",
-    'Le bonheur est dans les choses simples (le bonheur est dans les)',
+    "Le bonheur est dans les choses simples (le bonheur est dans les)",
     "Tous les jours, j'pèche et j'm'enfonce vers le bas",
     "J'crois en Dieu mais j'sais pas si lui il croit encore en moi",
     "J'dis \"il\" mais si ça s'trouve, c'est une femme",
@@ -71,34 +71,52 @@ const dinosLyrics = [
     "Mais j'me rappelle des commotions comme moyen d'locomotion",
     "Plus j'vieillis, plus j'ai du mal à contrôler mes émotions",
     "La vie m'fait peur comme un Desert Eagle",
-    'Comme un décès, comme un DZ qui gueule',
+    "Comme un décès, comme un DZ qui gueule",
     "On m'donnait beaucoup moins mais on m'promettait plus",
     "Donc j'suis revenu pour cracher l'feu comme si j'étais Prometheus",
     "J'pense à c'qu'on était quand j'regarde les étoiles",
     "Le bonheur n'vient pas à toi, le bonheur vient de toi",
-    'Ralentis un peu, tu roules beaucoup trop vite',
+    "Ralentis un peu, tu roules beaucoup trop vite",
     "J'm'en rappelle de quand j'priais pour tout c'que j'ai aujourd'hui",
-    'Choses simples, le bonheur est dans les choses simples, ouais',
+    "Choses simples, le bonheur est dans les choses simples, ouais",
     "Pourquoi j'me perds? Pourquoi j'm'enfonce?",
     "Que font les p'tits esprits quand les grands s'rencontrent?",
-    'Choses simples, le bonheur est dans les choses simples',
+    "Choses simples, le bonheur est dans les choses simples",
     "Tout s'terminerait mal, j'arrête de prier ",
     "Car si Dieu m'donnait c'que j'voulais, j'm'en servirai mal",
-    'Choses simples, Amen'
+    "Choses simples, Amen",
+    "Un peu d'bleu dans mon feu, un peu d'rouge dans mes yeux",
+    "J'pense à toi à nous deux, j'vais pas bien, j'vais juste mieux",
+    "Rien de très cartésien, ma tristesse part et vient",
+    "Comme ton sourire terni par le métro parisien",
+    "Fermer les yeux sur l'avenue des Champs-Elysées",
+    "Les ouvrir devant les pyramides de Gizeh",
+    "Tard le soir peu d'espoir car il n'fait pas très beau",
+    "Quand j'vais mal, je n'me soigne qu'avec des placebos",
+    "J'veux de l'or pour ma mère, j'veux du love pour moi-même",
+    "J'veux qu'tu dormes sur ma peine, j'veux qu'tu dormes sur ma peine",
+    "J'veux de l'or pour ma mère, j'veux du love pour moi-même",
+    "J'veux qu'tu dormes sur ma peine, j'veux qu'tu dormes sur ma peine",
+    "Seul tellement, tellement seul, tellement",
+    "Tellement seul, tellement, tellement seul, tellement",
+    "J'suis tellement seul, tellement, tellement seul, tellement",
+    "Un peu d'bleu dans mon feu, un peu d'rouge dans mes yeux",
+    "J'pense à toi à nous deux, j'vais pas bien, j'vais juste mieux",
+    "Près du monde aérien, loin du mont Valérien",
+    "Je me racine carré, de 10 000 pas très bien",
+    "Quand je suis avec toi, j'oublie tout c'qui va mal",
+    "J'aimerai t'ouvrir mon cœur, en duala, lingala",
+    "Tard le soir, peu d'espoir car il n'fait pas très beau",
+    "Quand j'vais mal, je n'me soigne qu'avec des placebos",
+    "J'veux de l'or pour ma mère, j'veux du love pour moi-même",
+    "J'veux qu'tu dormes sur ma peine, j'veux qu'tu dormes sur ma peine",
+    "J'veux de l'or pour ma mère, j'veux du love pour moi-même",
+    "J'veux qu'tu dormes sur ma peine, j'veux qu'tu dormes sur ma peine",
+    "Seul tellement, tellement seul, tellement",
+    "En rodéo-dé-o",
+    "Ouais mon cœur fait un rodé-rodéo",
+    "J'connais pas grand chose en médecine mais j'sais que",
+    "J'connais pas grand chose en amour mais j'sais que",
+    "J'connais pas grand chose en médecine mais j'sais qu'saigne",
+    "J'connais pas grand chose en amour mais j'sais que j't'aime"
 ]
-
-function getRandomTitle () {
-    const lyricIndex = Math.round(Math.random() * dinosLyrics.length)
-    return dinosLyrics[lyricIndex]
-}
-
-chrome.runtime.onMessage.addListener(({ type, data }, sender, sendResponse) => {
-    console.debug(`Message from ${(sender.tab) ? 'content-script' : 'extension'} of type: ${type}`)
-
-    switch (type) {
-    case 'get_dinos_title':
-        sendResponse(getRandomTitle())
-        break
-    default:
-    }
-})

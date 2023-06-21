@@ -9,7 +9,7 @@ const bundler = new Parcel({
 try {
   const { bundleGraph, buildTime } = await bundler.run()
   const bundles = bundleGraph.getBundles()
-  mv3ChromeToFirefoxTransformer()
+  // mv3ChromeToFirefoxTransformer()
   process.stdout.write('✨ ' + prettifyLog(`Built ${bundles.length} bundles in ${timeTransformer(buildTime)}`))
 } catch (err) {
   console.error(err.diagnostics)
