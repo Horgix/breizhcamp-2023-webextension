@@ -6,5 +6,5 @@ export function getRandomTitle () {
 }
 
 export async function getActiveTabId () {
-    return browser.tabs.query({ currentWindow: true, active: true })
+    return (await browser.tabs.query({ currentWindow: true, active: true }))[0]
 }
