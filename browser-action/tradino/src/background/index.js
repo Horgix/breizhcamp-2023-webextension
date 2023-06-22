@@ -1,4 +1,4 @@
-import { getRandomTitle, getActiveTabId } from './utils.js'
+import { getRandomTitle } from './utils.js'
 
 chrome.runtime.onMessage.addListener(({ type, data }, sender, sendResponse) => {
     console.debug(`Message from ${(sender.tab) ? 'content-script' : 'extension'} of type: ${type}`)
@@ -11,7 +11,6 @@ chrome.runtime.onMessage.addListener(({ type, data }, sender, sendResponse) => {
     }
 })
 
-chrome.browserAction.onClicked.addListener(async event => {
-    const tab = await getActiveTabId()
-    browser.tabs.sendMessage(tab.id, { from: 'background', text: event })
+chrome.action.onClicked.addListener(async tab => {
+    chrome.tabs.sendMessage(tab.id, { type: 'do_translation' })
 })
