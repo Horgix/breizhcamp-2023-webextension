@@ -58,24 +58,35 @@ Traque les sites de phishing à ses heures perdues
 
 ## Historique des navigateurs
 
-1. 1990: **WorldWideWeb** - Premier navigateur
-2. 1993: **NCSA Mosaic** - Premier navigateur à afficher des images (GIF et XBM)
-3. 1995: Création d'**Internet Exploreur**
-4. 2000:	**IE** gagne la guerre des navigateurs 😒
-5. 2003: Création de **Mozilla Firefox**
-6. 2005: **IE** ⏬ vs **Firefox** ⏫
-7. 2008: Sortie de **Google Chrome**
-8. 2012: **Chrome** devient le navigateur le plus utilisé
+* 1990: **WorldWideWeb** - Premier navigateur
+
+* 1993: **NCSA Mosaic** - Premier navigateur à afficher des images (GIF et XBM)
+
+* 1995: Création d'**Internet Exploreur**
+
+* 2000:	**IE** gagne la guerre des navigateurs 😒
+
+* 2003: Création de **Mozilla Firefox**
+
+* 2005: **IE** ⏬ vs **Firefox** ⏫
+
+* 2008: Sortie de **Google Chrome**
+
+* 2012: **Chrome** devient le navigateur le plus utilisé
 
 --
 
 ## Développement des extensions
 
-1. 2010: Ouverture du **Chrome Web Store**
-2. 2012: Plus de **750 millions** d'extension sur CWS
-3. 2017: Les extensions **Firefox** sont désormais largement compatibles avec celles de Chrome
-4. 2020: Microsoft reconstruit **Edge** avec Chromium
-5. 2020: Apple sort **Safari 14** qui copie l'API de chrome pour les extensions.
+* 2010: Ouverture du **Chrome Web Store**
+
+* 2012: Plus de **750 millions** d'extension sur CWS
+
+* 2017: Les extensions **Firefox** sont désormais largement compatibles avec celles de Chrome
+
+* 2020: Microsoft reconstruit **Edge** avec Chromium
+
+* 2020: Apple sort **Safari 14** qui copie l'API de chrome pour les extensions.
 
 --
 
@@ -339,6 +350,8 @@ _ou_ service worker (comme pour le web... mais pas tout à fait)
 
 --
 
+<!-- .slide: class="aurelien" -->
+
 ## Le service worker
 
 > Le _service worker_ permet de s'abonner et de réagir à des évènements émis par le navigateur, tels que la navigation vers une nouvelle page, la suppression d'un marque-page ou la fermeture d'un onglet.
@@ -357,20 +370,41 @@ _ou_ service worker (comme pour le web... mais pas tout à fait)
 
 --
 
+<!-- .slide: class="florent" -->
+
 ## Modification de notre extension
 
 ### content-script
 
 * Le content-script n'effectue plus d'action lorsqu'il est chargé
+
 * Il attend un message l'autorisant à déclencher cette action
+
+
 
 ### service worker
 
 * Le service worker s'abonne à l'évènement `clic sur l'icône de l'extension`
 * Apès un clic, il envoie un message au content-script pour le réveiller
 
+* Plus de problème d'autorisation !
+
+-- 
+
+## Modification de notre extension
+
+<img src="images/browser-action-sequence.svg" style="width: 1000px;" >
+
+--
+
+# Live coding <!-- .element: class="r-fit-text" -->
+
+💡 Retrouvez les versions corrigées dans le répertoire `content-script`
 
 ---
+
+<!-- .slide: class="aurelien" -->
+
 ---
 
 
