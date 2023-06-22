@@ -19,10 +19,14 @@ function translator (word) {
 export default function translateToDino (node) {
     const content = []
     for (const word of node.textContent.split(/\s/)) {
-        if (word.length <= 1) continue
+        if (word.length <= 1) {
+            // Inclut les signes de ponctuation
+            content.push(word)
+            continue
+        }
         const translatedWord = translator(word)
         content.push(translatedWord)
-    }
+    } 
 
     if (content.length > 0) {
         content[0] = content[0].slice(0, 1).toUpperCase() + content[0].slice(1)

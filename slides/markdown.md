@@ -347,12 +347,30 @@ _ou_ service worker (comme pour le web... mais pas tout à fait)
 
 * Démarré au besoin, déchargé lorsqu'il devient inactif
 
-* Communique 
-  * avec les autres composants de l'extension par envoi/réception de messages
-  * avec le navigateur par exécution de callbacks
+* Communique :
+  * **avec les autres composants** de l'extension par envoi/réception de messages
+  * **avec le navigateur** par des appels API et exécution de callbacks
+
+* L'endroit idéal pour aiguiller les messages et effectuer des actions globales à l'extension :
+	* télécharger des ressources
+	* intercepter des requêtes HTTP
+
+--
+
+## Modification de notre extension
+
+### content-script
+
+* Le content-script n'effectue plus d'action lorsqu'il est chargé
+* Il attend un message l'autorisant à déclencher cette action
+
+### service worker
+
+* Le service worker s'abonne à l'évènement `clic sur l'icône de l'extension`
+* Apès un clic, il envoie un message au content-script pour le réveiller
 
 
-
+---
 ---
 
 
