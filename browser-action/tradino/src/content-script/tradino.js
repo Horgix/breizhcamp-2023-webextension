@@ -23,6 +23,9 @@ export default function translateToDino (node) {
         const translatedWord = translator(word)
         content.push(translatedWord)
     }
-    content[0] = content[0].slice(0, 1).toUpperCase() + content[0].slice(1)
-    node.textContent = content.join(' ')
+
+    if (content.length > 0) {
+        content[0] = content[0].slice(0, 1).toUpperCase() + content[0].slice(1)
+        node.textContent = content.join(' ')
+    }
 }
