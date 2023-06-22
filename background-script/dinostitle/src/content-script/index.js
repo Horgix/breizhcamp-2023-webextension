@@ -1,19 +1,6 @@
-function getTextNode (node, action) {
-    if (node.nodeType === Node.TEXT_NODE) {
-        action(node)
-    } else {
-        node.childNodes.forEach(childNode => getTextNode(childNode, action))
-    }
-}
+import { getTextNode } from './utils.js'
+import translateToDino from './tradino.js'
+import translateToDinos from './tradinos.js'
 
-async function translateToDinos (node) {
-    const res = await chrome.runtime.sendMessage({
-        type: 'translate_to_dinos',
-        data: {
-            text: node.textContent
-        }
-    })
-    if (res) node.textContent = res
-}
-
+document.querySelectorAll('p, a').forEach(node => getTextNode(node, translateToDino))
 document.querySelectorAll('h1, h2, h3, h4').forEach(node => getTextNode(node, translateToDinos))

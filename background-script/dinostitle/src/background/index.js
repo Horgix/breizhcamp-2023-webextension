@@ -1,9 +1,4 @@
-import lyrics from '../data/dinos_lyrics.json'
-
-function getRandomTitle () {
-    const lyricIndex = Math.floor(Math.random() * lyrics.length)
-    return lyrics[lyricIndex]
-}
+import { getRandomTitle } from './utils.js'
 
 chrome.runtime.onMessage.addListener(({ type, data }, sender, sendResponse) => {
     console.debug(`Message from ${(sender.tab) ? 'content-script' : 'extension'} of type: ${type}`)
