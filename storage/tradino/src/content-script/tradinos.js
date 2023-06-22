@@ -5,5 +5,8 @@ export default async function translateToDinos (node) {
         'translate_to_dinos',
         { text: node.textContent }
     )
-    if (res) node.textContent = res
+    if (res) {
+        node.textContent = res
+        document.translatedTitle++
+    }
 }

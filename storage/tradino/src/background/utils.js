@@ -18,7 +18,6 @@ export async function setStats (key, value) {
     await chrome.storage.local.set({
         [key]: data[key] ? data[key] + value : value
     })
-    console.log("ADDING 1", data)
 }
 
 export function getStats (key) {

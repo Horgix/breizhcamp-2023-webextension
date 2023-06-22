@@ -1,4 +1,4 @@
-import { grrosettaStone } from './utils.js'
+import grrosettaStone  from '../grrosetta_stone.json'
 
 function translate (word) {
     const isUpper = word.slice(0, 1) === word.slice(0, 1).toUpperCase()
@@ -18,7 +18,6 @@ function translate (word) {
 
 export default async function translateToDino (node) {
     const content = []
-    if (!document.translatedWords) { document.translatedWords = 0 }
     for (const word of node.textContent.split(/\s/)) {
         if (word.length <= 1) continue
         const translatedWord = translate(word)
