@@ -4,7 +4,3 @@ export function getRandomTitle () {
     const lyricIndex = Math.floor(Math.random() * lyrics.length)
     return lyrics[lyricIndex]
 }
-
-export async function getActiveTabId () {
-    return (await browser.tabs.query({ currentWindow: true, active: true }))[0]
-}

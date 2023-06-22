@@ -11,6 +11,7 @@ chrome.runtime.onMessage.addListener(({ type, data }, sender, sendResponse) => {
     }
 })
 
-chrome.action.onClicked.addListener(async tab => {
-    chrome.tabs.sendMessage(tab.id, { type: 'do_translation' })
-})
+// Ne se lance pas si le manifest.json spécifie une popup.
+// chrome.action.onClicked.addListener(async tab => {
+//     chrome.tabs.sendMessage(tab.id, { type: 'do_translation' })
+// })

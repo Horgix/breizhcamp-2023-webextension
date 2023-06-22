@@ -18,6 +18,7 @@
         }
       ],
     "action": {
-        "default_title": "Juste a title !"
+        "default_title": "Juste a title !",
+        "default_popup": "./popup/index.html"
     }
 }
