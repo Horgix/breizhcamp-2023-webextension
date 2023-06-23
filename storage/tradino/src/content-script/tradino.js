@@ -28,4 +28,6 @@ export default async function translateToDino (node) {
         content[0] = content[0].slice(0, 1).toUpperCase() + content[0].slice(1)
         node.textContent = content.join(' ')
     }
+
+    return content.length
 }

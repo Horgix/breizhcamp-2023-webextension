@@ -1,15 +1,3 @@
-export function getTextNode (node) {
-    let nodes = []
-    if (node.nodeType === Node.TEXT_NODE) {
-        nodes.push(node)
-    } else {
-        node.childNodes.forEach(childNode => {
-            nodes = [...nodes, ...getTextNode(childNode)]
-        })
-    }
-    return nodes
-}
-
 /**
  * Les différentes zones de stockage:
  * - "local": Les items dans local sont limités à l'appareil sur lequel l'extension a été installée.
@@ -21,7 +9,7 @@ export async function setStats (prefix, value) {
     const storageKey = document.location.href + '::' + prefix
 
     const data = await chrome.storage.local.get({ [storageKey]: 0 })
-    chrome.storage.local.set({ [storageKey]: data[storageKey] + value })
+    return chrome.storage.local.set({ [storageKey]: data[storageKey] + value })
         .then(() => console.log('ok'))
         .catch(console.error)
 }
