@@ -1,4 +1,4 @@
-import grrosettaStone  from '../data/grrosetta_stone.json'
+import grrosettaStone from '../data/grrosetta_stone.json'
 
 function translate (word) {
     const isUpper = word.slice(0, 1) === word.slice(0, 1).toUpperCase()

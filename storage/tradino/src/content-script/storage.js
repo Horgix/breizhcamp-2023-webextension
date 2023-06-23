@@ -16,10 +16,10 @@ export async function setStats (prefix, value) {
 
 export async function getStats () {
     const storageKey = document.location.href + '::'
-    const textData = await chrome.storage.local.get({ [storageKey+"text"]: 0 })
-    const titleData = await chrome.storage.local.get({ [storageKey+"title"]: 0 })
+    const textData = await chrome.storage.local.get({ [storageKey + 'text']: 0 })
+    const titleData = await chrome.storage.local.get({ [storageKey + 'title']: 0 })
     return {
-        text: textData[storageKey+"text"],
-        title: titleData[storageKey+"title"]
+        text: textData[storageKey + 'text'],
+        title: titleData[storageKey + 'title']
     }
 }
