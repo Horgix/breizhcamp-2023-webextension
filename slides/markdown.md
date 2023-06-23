@@ -50,9 +50,37 @@ Traque les sites de phishing à ses heures perdues
 5. Browser action (icône)
 
 ---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- .slide: data-background="#000" class="chapter" -->
 
 # Introduction <!-- .element: class="r-fit-text" -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 --
 
@@ -133,9 +161,37 @@ Traque les sites de phishing à ses heures perdues
 TODO
 
 ---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- .slide: data-background="#000" class="chapter" -->
 
 # Let's get started! <!-- .element: class="r-fit-text" -->
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 --
 
@@ -218,9 +274,35 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 ---
 
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- .slide: data-background="#000" class="chapter" -->
 
 # Le content-script <!-- .element: class="r-fit-text" -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 --
 
@@ -342,11 +424,40 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 ---
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 <!-- .slide: data-background="#000" class="chapter" -->
 
 # Le background-script <!-- .element: class="r-fit-text" -->
+# ou service worker
 
-_ou_ service worker (comme pour le web... mais pas tout à fait)
+(comme pour le web... mais pas tout à fait)
+
+
+
+
+
+
+
+
+
+
+
+
 
 --
 
@@ -374,6 +485,8 @@ _ou_ service worker (comme pour le web... mais pas tout à fait)
 
 ## Modification de notre extension
 
+* Documentation : [ <img src="images/chrome_icon.svg" style="height: 1em;"> Chrome](https://developer.chrome.com/docs/extensions/mv3/service_workers/), [ <img src="images/firefox_icon.svg" style="height: 1em;"> Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Background_scripts)
+
 ### content-script
 
 * Le content-script n'effectue plus d'action lorsqu'il est chargé
@@ -385,6 +498,7 @@ _ou_ service worker (comme pour le web... mais pas tout à fait)
 ### service worker
 
 * Le service worker s'abonne à l'évènement `clic sur l'icône de l'extension`
+
 * Apès un clic, il envoie un message au content-script pour le réveiller
 
 * Plus de problème d'autorisation !
@@ -399,18 +513,71 @@ _ou_ service worker (comme pour le web... mais pas tout à fait)
 
 # Live coding <!-- .element: class="r-fit-text" -->
 
-💡 Retrouvez les versions corrigées dans le répertoire `content-script`
-
----
-
-<!-- .slide: class="aurelien" -->
-
 ---
 
 
 
 
 
+
+
+
+
+
+
+
+<!-- .slide: data-background="#000" class="chapter" -->
+
+# Stockage persistent <!-- .element: class="r-fit-text" -->
+
+Pouvoir mémoriser des choses, c'est pratique
+
+
+
+
+
+
+
+
+
+
+
+
+
+--
+
+## Stockage persistent
+
+* Documentation : [ <img src="images/chrome_icon.svg" style="height: 1em;"> Chrome](https://developer.chrome.com/docs/extensions/reference/storage/), [ <img src="images/firefox_icon.svg" style="height: 1em;"> Firefox](https://developer.mozilla.org/fr/docs/Mozilla/Add-ons/WebExtensions/API/storage)
+
+* Nécessite la permission `storage` ou `unlimitedStorage` dans le manifest 
+
+* 3 types de stockage :
+  * **local** : dans ce navigateur (~5Mo par défaut)
+  * **sync** : disponible pour tous les instances synchronisées
+  * **managed** : [déployé par l'administrateur du domaine](https://developer.mozilla.org/fr/docs/Mozilla/Add-ons/WebExtensions/API/storage/managed) et accessible en lecture seule par l'extension
+
+* ⚠ Lecture et écriture sont asynchrones
+
+--
+
+## Modification de notre extension
+
+### Stockage de statistiques
+
+* Enregistrer le nombre d'actions faites par notre extension
+
+* Depuis le background-script et le content-script
+
+* Objectif : pouvoir restituer ces statistiques à l'utilisateur
+
+```js
+chrome.storage.local.set({ key: value }).then(() => {
+  console.log("Value is set");
+});
+```
+
+--
 
 You can format text to *italic* and **bold** emphasis.
 
