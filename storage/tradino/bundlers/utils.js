@@ -1,11 +1,17 @@
-import { readFileSync, writeFileSync } from 'fs'
+import { readFileSync, writeFileSync, existsSync } from 'fs'
+
+
+const MANIFEST_PATH = './dist/manifest.json'
+
 
 /**
  * Update manifest.json file in dist folder for compatibility with Firefox,
  * as Parcel doesn't handle new Firefox MV3 API.
  */
 export function mv3ChromeToFirefoxTransformer () {
-  const file = readFileSync('./dist/manifest.json')
+  if (!existsSync(MANIFEST_PATH)) return
+
+  const file = readFileSync(MANIFEST_PATH)
   const manifest = JSON.parse(file)
 
   if (manifest.background?.service_worker) {
