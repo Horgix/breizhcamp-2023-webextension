@@ -14,25 +14,26 @@ export function getTextNode (node) {
     return nodes
 }
 
-async function translate (patern, action) {
-    const textNodes = Array.from(document.querySelectorAll(patern)).map(getTextNode).flat()
+async function translate (pattern, action) {
+    const textNodes = Array.from(document.querySelectorAll(pattern)).map(getTextNode).flat()
     const validTextNodes = textNodes.filter(node => node?.textContent?.length > 0)
     const total_points = await Promise.all(validTextNodes.map(action))
-    const total = total_points.reduce((a, b) => a + b)
+    let total = 0
+    if (total_points.length > 0) { total = total_points.reduce((a, b) => a + b) }
     return total
 }
 
 chrome.runtime.onMessage.addListener(({ type, data }, sender, sendResponse) => {
     switch (type) {
     case 'do_translate_text':
-        translate('p, a', translateToDino)
+        translate('p', translateToDino)
             .then(async total => {
                 await setStats('text', total)
                 sendResponse(true)
             })
         break
     case 'do_translate_title':
-        translate('h1, h2, h3, h4, h5, h6', translateToDinos)
+        translate('h1, h2', translateToDinos)
             .then(async total => {
                 await setStats('title', total)
                 sendResponse(true)
