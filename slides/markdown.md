@@ -126,11 +126,11 @@ Traque les sites de phishing à ses heures perdues
 
 ## Manifests - v2 vs v3
 
-|Feature			 | v2			| v3			| Impact |
+|Fonctionnalité			 | v2			| v3			| Impact |
 |--------------|---------------|---------------|--------------|
-| Exécution de code distant | Autorisé | Interdit | Sécurité
-| Services en arrière plan | Background pages | Service workers | Performance
-| WebRequest | Blocking | Declarative | Sécurité*
+| Exécution de code distant | Autorisé | **Interdit** | Sécurité
+| Services en arrière plan | Background pages | **Service workers** | Performance
+| WebRequest | Blocking | **Declarative** | Sécurité*
 
 *utilisé par 42% des extensions malveillantes en 2019
 
@@ -142,7 +142,7 @@ Youtube : [What's new in Chrome Extensions, Google/IO 2023](https://io.google/20
 
 ```json [2-4|5-9|11-16]
 {
-	"manifest_version": 2,
+	"manifest_version": 3,
 	"name": "Borderify",
 	"version": "1.0",
 	"description": "Adds a solid red border to all webpages matching mozilla.org.",
@@ -284,12 +284,13 @@ npm run build:firefox
 # Idem avec mise à jour automatique
 npm run watch:firefox
 
-# Lance un navigateur déjà outillé
+# Lance un navigateur déjà outillé qui recharge l'extension
+# quand le contenu du dist/ change
 npm run dev:firefox
 ```
 
 Quelques subtilités :
-* Parcel ne gère par le build d'extensions au format MV3 pour Firefox
+* Parcel ne gère pas le build d'extensions au format MV3 pour Firefox
 * Besoin de modifier à la marge le `manifest.json` au moment du build
 
 -- 
@@ -297,6 +298,10 @@ Quelques subtilités :
 # ça marche ?
 
 Alors c'est l'occasion de customiser votre `manifest.json` !
+
+* Nom
+* Description
+* ID (adresse email ou GUID)
 
 ---
 
@@ -366,21 +371,23 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 * Sur des sites/pages précises
 * Déclaration possible au runtime (demande de permissions à la volée*)
 
-*ou pas (voir [activeTab](https://developer.chrome.com/docs/extensions/mv3/manifest/activeTab/))
+*sauf si l'utilisateur déclenche l'extension (voir [activeTab](https://developer.chrome.com/docs/extensions/mv3/manifest/activeTab/))
 
 
 -- 
 
-# Le content-script
+## Le content-script
 
-## Votre premier choix
+### Définir le rôle de notre extension
 
-| DinoFacts | PoliDino | Tradino |
-|-|-|-|
-| Ajoute des anecdotes amusantes concernant les dinosaures sur chaque page |  Remplace les noms des personnes politiques par des noms de dinosaures, une idée inspirée de <img src="https://addons.mozilla.org/user-media/addon_icons/2670/2670987-64.png?modified=0bc94733" style="height: 1em;"> [Proutify](https://addons.mozilla.org/fr/firefox/addon/proutify/) | Affiche tous les textes de la page en langage Dino et remplace les titres par des paroles de [Dinos](https://fr.wikipedia.org/wiki/Dinos_(rappeur)) |
-| Injection de CSS | Remplacement sur le domaine liberation.fr | Choc culturel |
+| DinoFacts | Tradino |
+|-|-|
+| Ajoute des anecdotes amusantes concernant les dinosaures sur chaque page |  Affiche tous les textes de la page en langage Dino et remplace les titres par des paroles de [Dinos](https://fr.wikipedia.org/wiki/Dinos_(rappeur)) |
+| Injection de CSS | Choc culturel |
 
-**Remarque :** Ces deux extensions fonctionnent sans exploiter les API du navigateur.
+**Remarques :** 
+* Ces deux extensions fonctionnent (pour le moment) sans exploiter les API du navigateur.
+* Les corrigés sont donnés pour Tradino
 
 --
 
@@ -403,50 +410,15 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 || Chrome | Firefox |
 |-|-|-|
-| Initialisation | npm run watch | npm run watch:firefox |
-| Lancement du navigateur | lancer chrome, installer l'extension | npm run dev:firefox |
-| Après modif du code | Recharger l'extension | Rechargement automatique |
+| Initialisation | `npm run build` | `npm run build:firefox` |
+| Lancement du navigateur | lancer chrome, installer l'extension | `npm run dev:firefox` |
+| Après modif du code | `npm run build` et recharger l'extension | `npm run build:firefox` (Rechargement automatique) |
 
 --
 
 # Live coding <!-- .element: class="r-fit-text" -->
 
 💡 Retrouvez les versions corrigées dans le répertoire `content-script`
-
---
-
-## Signature et distribution
-
-### <img src="images/firefox_icon.svg" style="height: 1em;"> Firefox
-
-* Créer un compte sur le [pôle développeurs de modules](https://addons.mozilla.org/fr/developers/)
-* Proposer un nouveau module
-* Choisir la publication :
-  - sur https://addons.mozilla.org
-  - en auto-distribution (voir la clé [`update_url`](https://extensionworkshop.com/documentation/manage/updating-your-extension/))
-* Packer l'extension et envoyer le fichier `.xpi` puis...
-
--- 
-
-* Attendre la signature par Mozilla
-
-![Signature de l'extension](images/firefox-extension-signature.png)
-
---
-
-### <img src="images/chrome_icon.svg" style="height: 1em;"> Chrome, edge
-
-* Créer un compte sur le [Chrome Web Store](https://developer.chrome.com/docs/webstore/register/)
-* Proposer un nouveau module sur le [Chrome Developer Dashboard](https://chrome.google.com/webstore/devconsole)
-* Packer l'extension et envoyer le fichier `.zip`
-* Choisir la visibilité sur le store :
-  - publique
-  - non listée
-  - privée (nécessite ajout des emails des utilisateurs)
-
---
-
-![Chrome developer dashboard](images/chrome-extension-signature.png)
 
 ---
 
@@ -515,6 +487,41 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 ### content-script
 
+* Le content-script ne stocke plus de ressource
+
+* Il demande au service worker de les lui fournir _via_ échange de messages
+
+* ⚠ L'envoi de message est asynchrone
+
+
+
+### service worker
+
+* Le service worker déclare une callback avec `onMessage.addListener()`
+
+* Il répond au service worker lorsque sollicité (~appel RPC)
+
+-- 
+
+## Modification de notre extension
+
+<img src="images/browser-action-sequence.svg" style="width: 1000px;" >
+
+--
+
+# Live coding <!-- .element: class="r-fit-text" -->
+
+---
+
+TODO INSERER ICI LA PARTIE SUR LE BROWSER ACTION
+
+--
+
+## Modification de notre extension
+
+
+### content-script
+
 * Le content-script n'effectue plus d'action lorsqu'il est chargé
 
 * Il attend un message l'autorisant à déclencher cette action
@@ -531,17 +538,8 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 * Plus de problème d'autorisation !
 
--- 
-
-## Modification de notre extension
-
-<img src="images/browser-action-sequence.svg" style="width: 1000px;" >
-
 --
 
-# Live coding <!-- .element: class="r-fit-text" -->
-
----
 
 
 
@@ -669,7 +667,7 @@ chrome.storage.local.set({ key: value }).then(() => {
 <img src="images/popup-message-flow.svg" style="width: 1000px;" >
 
 
--- 
+--- 
 
 
 
@@ -726,20 +724,86 @@ En Anglais _options page_
 
 * Créer un raccourci permettant d'ouvrir cette page depuis la popup de l'extension
 
+---
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- .slide: data-background="#000" class="chapter" -->
+
+# Signature et distribution <!-- .element: class="r-fit-text" -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--
+
+## <img src="images/firefox_icon.svg" style="height: 1em;"> Firefox
+
+* Créer un compte sur le [pôle développeurs de modules](https://addons.mozilla.org/fr/developers/)
+* Proposer un nouveau module
+* Choisir la publication :
+  - sur https://addons.mozilla.org
+  - en auto-distribution (voir la clé [`update_url`](https://extensionworkshop.com/documentation/manage/updating-your-extension/))
+* Packer l'extension et envoyer le fichier `.xpi` puis...
 
 -- 
 
+* Attendre la signature par Mozilla
 
+![Signature de l'extension](images/firefox-extension-signature.png)
 
+--
 
+## <img src="images/chrome_icon.svg" style="height: 1em;"> Chrome, edge
 
+* Créer un compte sur le [Chrome Web Store](https://developer.chrome.com/docs/webstore/register/)
+* Proposer un nouveau module sur le [Chrome Developer Dashboard](https://chrome.google.com/webstore/devconsole)
+* Packer l'extension et envoyer le fichier `.zip`
+* Choisir la visibilité sur le store :
+  - publique
+  - non listée
+  - privée (nécessite ajout des emails des utilisateurs)
 
+--
 
-
-
+<img alt="Chrome developer dashboard" src="images/chrome-extension-signature.png" style="width: 1000px;">
 
 
 ---
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 <!-- .slide: data-background="#000" class="chapter" -->
 
