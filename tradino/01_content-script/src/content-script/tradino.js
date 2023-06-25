@@ -27,6 +27,4 @@ export default async function translateToDino (node) {
     if (content.length > 0) {
         node.textContent = content.join(' ')
     }
-
-    return content.length
 }
