@@ -9,7 +9,7 @@ COPY package.json package-lock.json ./
 # Speed up build by removing dependencies that are large and not needed for this use case
 # qunit -> pupeteer -> chrome
 RUN sed -i '/^.*node-qunit-puppeteer.*$/d' package.json
-RUN npm config set registry https://repos.tech.orange/artifactory/api/npm/npmproxy
+# RUN npm config set registry https://repos.tech.orange/artifactory/api/npm/npmproxy
 RUN npm install
 
 

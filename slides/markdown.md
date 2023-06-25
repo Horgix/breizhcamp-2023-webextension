@@ -1,6 +1,6 @@
 <!-- .slide: data-background="#FFF" class="cover" -->
 
-# Développez votre première extension de naigateur<!-- .element: class="title" -->
+# Développez votre première extension de navigateur<!-- .element: class="title" -->
 
 ## Breizhcamp 2023 <!-- .element: class="title" -->
 
@@ -383,11 +383,16 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 | DinoFacts | Tradino |
 |-|-|
 | Ajoute des anecdotes amusantes concernant les dinosaures sur chaque page |  Affiche tous les textes de la page en langage Dino et remplace les titres par des paroles de [Dinos](https://fr.wikipedia.org/wiki/Dinos_(rappeur)) |
-| Injection de CSS | Choc culturel |
 
 **Remarques :** 
 * Ces deux extensions fonctionnent (pour le moment) sans exploiter les API du navigateur.
 * Les corrigés sont donnés pour Tradino
+
+--
+
+### Aucun vrai dinosaure n'a été maltraité pour la création de cette formation
+
+<iframe width="1200" height="600" src="https://www.youtube-nocookie.com/embed/EBEWGesz3EQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
 
 --
 
@@ -485,6 +490,7 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 * Documentation : [ <img src="images/chrome_icon.svg" style="height: 1em;"> Chrome](https://developer.chrome.com/docs/extensions/mv3/service_workers/), [ <img src="images/firefox_icon.svg" style="height: 1em;"> Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/Background_scripts)
 
+
 ### content-script
 
 * Le content-script ne stocke plus de ressource
@@ -492,7 +498,6 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 * Il demande au service worker de les lui fournir _via_ échange de messages
 
 * ⚠ L'envoi de message est asynchrone
-
 
 
 ### service worker
@@ -505,15 +510,105 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 ## Modification de notre extension
 
-<img src="images/browser-action-sequence.svg" style="width: 1000px;" >
+<img src="images/service-worker-flow.svg" style="width: 1300px;" >
 
 --
 
 # Live coding <!-- .element: class="r-fit-text" -->
 
+💡 Retrouvez la version corrigée dans le répertoire `service-worker`
+
 ---
 
-TODO INSERER ICI LA PARTIE SUR LE BROWSER ACTION
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- .slide: data-background="#000" class="chapter" -->
+
+# Popup et browser-action <!-- .element: class="r-fit-text" -->
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+--
+
+## Browser-action
+
+* Documentation : [ <img src="images/chrome_icon.svg" style="height: 1em;"> Chrome](https://developer.chrome.com/docs/extensions/reference/browserAction/#popup), [ <img src="images/firefox_icon.svg" style="height: 1em;"> Firefox](https://developer.mozilla.org/fr/docs/Mozilla/Add-ons/WebExtensions/API/browserAction)
+
+<img src="images/browser-action-icons.png" style="width: 1000px;" >
+
+* De belles icônes dans différentes résolutions
+	* on peut leur ajouter des tags
+	* modifier l'icône à la volée
+
+* Sans configuration supplémentaire, le click sur l'icône déclenche l'envoi d'un évènement `click` au service worker
+
+--
+
+## La popup
+
+<table>
+<tbody>
+<tr style="background: none;">
+<td>
+<img src="images/ublock-origin-popup.png">
+</td>
+<td>
+
+* Documentation : [ <img src="images/chrome_icon.svg" style="height: 1em;"> Chrome](), [ <img src="images/firefox_icon.svg" style="height: 1em;"> Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Popups)
+
+```json
+"browser_action": {
+  "browser_style": true,
+  "default_icon": {
+    "16": "button/geo-16.png",
+    "32": "button/geo-32.png"
+  },
+  "default_title": "Whereami?",
+  "default_popup": "popup/geo.html",
+}
+```
+
+* Une page web indépendante (HTML, JS) définie dans le manifest et ouverte uniquement à l'initiative de l'utilisateur (sauf sous Firefox, cf. [`browserAction.openPopup`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/browserAction/openPopup))
+
+* Communique avec le service worker ou le content-script par envoi de messages
+
+* Attention : dans le cas général, la popup veut envoyer des messages au content-script de l'onglet actif !
+
+</td>
+</tr>
+</tbody>
+</table>
+
+-- 
+
+## Modification de notre extension
+
+<img src="images/popup-message-flow.svg" style="width: 1000px;" >
 
 --
 
@@ -532,9 +627,9 @@ TODO INSERER ICI LA PARTIE SUR LE BROWSER ACTION
 
 ### service worker
 
-* Le service worker s'abonne à l'évènement `clic sur l'icône de l'extension`
+* La popup expose deux boutons cliquables
 
-* Apès un clic, il envoie un message au content-script pour le réveiller
+* Apès un clic, elle envoie un message au content-script pour déclencher le remplacement
 
 * Plus de problème d'autorisation !
 
@@ -602,70 +697,6 @@ chrome.storage.local.set({ key: value }).then(() => {
   console.log("Value is set");
 });
 ```
-
----
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- .slide: data-background="#000" class="chapter" -->
-
-# Une popup  <!-- .element: class="r-fit-text" -->
-
-
-
-
-
-
-
-
-
-
-
-
-
-
---
-
-## Une popup
-
-<table>
-<tbody>
-<tr style="background: none;">
-<td>
-<img src="images/ublock-origin-popup.png">
-</td>
-<td>
-
-* Documentation : [ <img src="images/chrome_icon.svg" style="height: 1em;"> Chrome](https://developer.chrome.com/docs/extensions/reference/browserAction/), [ <img src="images/firefox_icon.svg" style="height: 1em;"> Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Popups)
-
-* De belles icônes dans différentes résolutions
-	* on peut leur ajouter des tags
-	* modifier l'icône à la volée
-
-* Une page web indépendante (HTML, JS) définie dans le manifest et ouverte uniquement à l'initiative de l'utilisateur
-
-* Communique avec le service worker ou le content-script par envoi de messages
-
-</td>
-</tr>
-</tbody>
-</table>
-
---
-
-## Modification de notre extension
-
-<img src="images/popup-message-flow.svg" style="width: 1000px;" >
-
 
 --- 
 

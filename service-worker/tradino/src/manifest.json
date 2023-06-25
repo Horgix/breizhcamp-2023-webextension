@@ -4,6 +4,7 @@
     "description": "Foo",
     "version": "1.0.0",
     "permissions": [
+        "activeTab"
     ],
     "host_permissions": [
         "<all_urls>"
@@ -18,8 +19,5 @@
           "js": ["content-script/index.js"]
         }
     ],
-    "action": {
-        "default_title": "Juste a title !",
-        "default_popup": "./popup/index.html"
-    }
+    "content_security_policy": {}
 }
