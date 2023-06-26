@@ -380,9 +380,7 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 -- 
 
-## Le content-script
-
-### Le rôle de notre extension
+##  Le rôle de notre extension
 
 > Afficher tous les textes de la page en langage Dino
 
@@ -489,7 +487,7 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 ## Modification de notre extension
 
-### Transformation des titres en Dinos
+### Transformation des titres en Dinos (le rappeur)
 
 ![](images/human2dinos.png)
 
@@ -508,7 +506,7 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 * Il demande au service worker de les lui fournir _via_ échange de messages
 
-* ⚠ L'envoi de message est asynchrone
+* ⚠️ L'envoi de message est asynchrone
 
 
 ### service worker
@@ -697,7 +695,7 @@ Pouvoir mémoriser des choses, c'est pratique
 
 ### Stockage de statistiques
 
-* Enregistrer le nombre d'actions faites par notre extension dans chaque page depuis le content-script
+* Enregistrer le nombre de remplacements faits par notre extension dans chaque page depuis le content-script
 
 * Afficher ces statistiques dans la popup
 
@@ -942,10 +940,10 @@ En Anglais _options page_
 
 -- 
 
-## Testes
+## Tests
 
-* Testes unitaires: JEST.
-* Testes E2E: Possibilité d'intégrer l'extension directement dans puppeteer.
+* Tests unitaires: JEST.
+* Tests E2E: Possibilité d'intégrer l'extension directement dans puppeteer.
 
 
 ```js
@@ -964,3 +962,9 @@ const puppeteerArgs = [
   '--show-component-extension-options',
 ];
 ```
+
+--
+
+# Merci pour votre grattention <!-- .element: class="r-fit-text" -->
+
+
