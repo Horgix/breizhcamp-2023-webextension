@@ -1,5 +1,6 @@
 import textToDino from './tradino.js'
 import titleToDinos from './tradinos.js'
+import { setStats } from './storage.js'
 
 export function getTextNode (node) {
     let nodes = []
@@ -16,16 +17,27 @@ export function getTextNode (node) {
 async function translate (pattern, action) {
     const textNodes = Array.from(document.querySelectorAll(pattern)).map(getTextNode).flat()
     const validTextNodes = textNodes.filter(node => node?.textContent?.length > 0)
-    validTextNodes.map(action)
+    const total_points = await Promise.all(validTextNodes.map(action))
+    let total = 0
+    if (total_points.length > 0) { total = total_points.reduce((a, b) => a + b) }
+    return total
 }
 
 chrome.runtime.onMessage.addListener(({ type, data }, sender, sendResponse) => {
     switch (type) {
     case 'do_translate_text':
         translate('p', textToDino)
+        .then(async total => {
+            await setStats('text', total)
+            sendResponse(true)
+        })
         break
     case 'do_translate_title':
         translate('h1, h2', titleToDinos)
+        .then(async total => {
+            await setStats('title', total)
+            sendResponse(true)
+        })
         break
     default:
         // Permet d'envoyer des logs au content-script (debugging)
