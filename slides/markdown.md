@@ -916,3 +916,30 @@ En Anglais _options page_
 </table>
 
 -- 
+
+## Testes
+
+* Testes unitaires: JEST.
+* Testes E2E: Possibilité d'intégrer l'extension directement dans puppeteer.
+
+
+```js
+const puppeteer = require('puppeteer'); // import Puppeteer
+const path = require('path');
+
+// Path to the actual extension we want to be testing
+const pathToExtension = path.join(
+  path.join(__dirname, '..', '..', '..', '..', 'dist')
+);
+
+// Tell puppeteer we want to load the web extension
+const puppeteerArgs = [
+  `--disable-extensions-except=${pathToExtension}`,
+  `--load-extension=${pathToExtension}`,
+  '--show-component-extension-options',
+];
+```
+
+--
+
+## 
