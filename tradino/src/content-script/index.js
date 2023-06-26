@@ -19,5 +19,19 @@ async function translate (pattern, action) {
     validTextNodes.map(action)
 }
 
-translate('p', textToDino)
-translate('h1, h2', titleToDinos)
+chrome.runtime.onMessage.addListener(({ type, data }, sender, sendResponse) => {
+    switch (type) {
+    case 'do_translate_text':
+        translate('p', textToDino)
+        break
+    case 'do_translate_title':
+        translate('h1, h2', titleToDinos)
+        break
+    default:
+        // Permet d'envoyer des logs au content-script (debugging)
+        console.log(type + ':', data)
+    }
+
+    // Nécéssaire pour réaliser une réponse asynchrone
+    return true
+})
