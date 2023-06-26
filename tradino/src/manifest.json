@@ -17,5 +17,11 @@
           "matches": ["<all_urls>"],
           "js": ["content-script/index.js"]
         }
+    ],
+    "web_accessible_resources": [
+      { 
+        "resources": [ "data/jurassic-park.jpg" ],
+        "matches": [ "<all_urls>" ]
+      }
     ]
 }
