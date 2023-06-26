@@ -1,4 +1,5 @@
 import textToDino from './tradino.js'
+import titleToDinos from './tradinos.js'
 
 export function getTextNode (node) {
     let nodes = []
@@ -12,6 +13,11 @@ export function getTextNode (node) {
     return nodes
 }
 
-const textNodes = Array.from(document.querySelectorAll('p')).map(getTextNode).flat()
-const validTextNodes = textNodes.filter(node => node?.textContent?.length > 0)
+async function translate (pattern, action) {
+    const textNodes = Array.from(document.querySelectorAll(pattern)).map(getTextNode).flat()
+    const validTextNodes = textNodes.filter(node => node?.textContent?.length > 0)
+    validTextNodes.map(action)
+}
+
 translate('p', textToDino)
+translate('h1, h2', titleToDinos)

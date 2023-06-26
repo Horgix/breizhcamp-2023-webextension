@@ -8,9 +8,13 @@
     	"<all_urls>"
     ],
     "content_scripts": [
-        {
-          "matches": ["<all_urls>"],
-          "js": ["content-script/index.js"]
-        }
-    ]
+      {
+        "matches": ["<all_urls>"],
+        "js": ["content-script/index.js"]
+      }
+    ],
+    "background": {
+      "service_worker": "background/index.js",
+      "type": "module"
+    }
 }
