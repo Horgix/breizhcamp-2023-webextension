@@ -222,7 +222,7 @@ Désolés, on n'a pas assez de budget pour acheter un iPhone 😓
 
 ## Pré-requis
 
-### NodeJS
+### NodeJS (v18 mini)
 
 ➡️ https://nodejs.org/en/download
 
@@ -231,7 +231,7 @@ Désolés, on n'a pas assez de budget pour acheter un iPhone 😓
 * Linux
 * Docker
 
-### Git (facultatif)
+### Git
 
 Selon votre système d'exploitation
 
@@ -241,19 +241,20 @@ Selon votre système d'exploitation
 
 ### Récupérer les sources de la formation
 
+<img src="images/repo.svg" style="width: 300px;">
+
 ```sh
 git clone https://github.com/Nuuky/breizhcamp-2023-webextension.git
-ou : wget https://github.com/Nuuky/breizhcamp-2023-webextension/archive/refs/heads/main.zip
 ```
 
-<img src="images/repo.svg" style="width: 400px;">
+**Pas de data ?** Connectez-vous au réseau Wifi _webextension_ et suivez les instructions sur la page http://192.168.0.1
 
 --
 
 ### Installer les packages node
 
 ```sh
-cd breizhcamp-2023-webextension/template
+cd breizhcamp-2023-webextension/tradino
 npm install
 ```
 
@@ -276,6 +277,7 @@ npm run watch
 
 * Charger l'extension non empaquetée
 * Sélectionner le dossier `dist/`
+* La mise à jour est automatique lorsque le dossier `dist/` change
 
 --
 
@@ -305,7 +307,9 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 * Nom
 * Description
-* ID (adresse email ou GUID)
+* ID (adresse email ou GUID entre accolades)
+
+Besoin d'un GUID ? https://guidgenerator.com/
 
 ---
 
@@ -353,7 +357,7 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 * Limitations : 
 	* ⛔ le content-script est désactivé sur les domaines sensibles comme https://accounts.firefox.com
-	* Il ne permet pas d'accéder à toute l'API WebExtension
+	* Il ne permet pas d'accéder à toute l'API WebExtension (ex. `runtime.getBrowserInfo()`)
 
 -- 
 
@@ -397,7 +401,7 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 		{
 			"matches": ["<all_urls>"],
 			"js": ["content-script/index.js"],
-			"css": ["content-script/index.css"],
+			/* "css": ["content-script/index.css"], */
 
 		}
 	],
@@ -424,7 +428,7 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 # Live coding <!-- .element: class="r-fit-text" -->
 
-💡 Retrouvez les versions corrigées dans le répertoire `content-script`
+💡 Placez-vous dans la branche _01-content-script_ : `git checkout 01-content-script`
 
 ---
 
@@ -525,7 +529,7 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 # Live coding <!-- .element: class="r-fit-text" -->
 
-💡 Retrouvez la version corrigée dans le répertoire `service-worker`
+💡 Placez-vous dans la branche _02-service-worker_ : `git checkout 02-service-worker`
 
 ---
 
@@ -642,6 +646,12 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 * Plus de problème d'autorisation !
 
+--
+
+# Live coding <!-- .element: class="r-fit-text" -->
+
+💡 Placez-vous dans la branche _03-browser-action_ : `git checkout 03-browser-action`
+
 ---
 
 
@@ -711,6 +721,11 @@ chrome.storage.local.set({ key: value }).then(() => {
 
 ![](images/storage-message-flow.svg)
 
+--
+
+# Live coding <!-- .element: class="r-fit-text" -->
+
+💡 Placez-vous dans la branche _04-storage_ : `git checkout 04-storage`
 
 --- 
 
@@ -777,6 +792,13 @@ En Anglais _options page_
 
 ![](images/options-page-flow.svg)
 
+--
+
+# Live coding <!-- .element: class="r-fit-text" -->
+
+💡 Placez-vous dans la branche _05-options-page_ : `git checkout 05-options-page`
+
+La solution complète est donnée dans la branche _06-solution_.
 
 ---
 
