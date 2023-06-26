@@ -7,19 +7,26 @@ const bundler = new Parcel({
 })
 
 let firstRun = true
-try {
-  await bundler.watch((err, buildEvent) => {
-    if (err) console.error(err)
-    else {
-      if (!firstRun) {
-        process.stdout.clearLine(0)
-        process.stdout.cursorTo(0)
-      }
-      process.stdout.write('✨ ' + prettifyLog(`Built in ${timeTransformer(buildEvent.buildTime)}`))
-      mv3ChromeToFirefoxTransformer()
-      if (firstRun) firstRun = false
+let subscription = await bundler.watch((err, event) => {
+  if (err) {
+    // fatal error
+    throw err;
+  }
+
+  if (event.type === 'buildSuccess') {
+    mv3ChromeToFirefoxTransformer()
+    if (!firstRun) {
+      process.stdout.clearLine(0)
+      process.stdout.cursorTo(0)
     }
-  })
-} catch (err) {
-  console.error(err.diagnostics)
-}
+    process.stdout.write('✨ ' + prettifyLog(`Built in ${timeTransformer(event.buildTime)}`))
+    if (firstRun) firstRun = false
+    // let bundles = event.bundleGraph.getBundles();
+  } else if (event.type === 'buildFailure') {
+    console.log(event.diagnostics);
+  }
+});
+
+
+// some time later...
+// await subscription.unsubscribe();
