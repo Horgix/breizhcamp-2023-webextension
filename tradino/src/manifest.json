@@ -1,9 +1,14 @@
 {
     "manifest_version": 3,
-    "name": "Base template",
-    "description": "Foo",
+    "name": "Tradino",
+    "description": "Le traducteur Humain/Dino n°1 du marché -- Icône CC BY-NC-SA 3.0 par https://www.deviantart.com/asuma17",
     "version": "1.0.0",
     "permissions": [],
+    "icons": {
+      "48": "data/logo-48.png",
+      "96": "data/logo-96.png",
+      "128": "data/logo-128.png"
+    },
     "host_permissions": [
     	"<all_urls>"
     ],
