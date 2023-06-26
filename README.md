@@ -4,10 +4,21 @@
 
 ## Affichage des slides
 
+### Avec npm
+
+```
+cd slides
+npm install
+npm run
+```
+
+### Avec docker compose
+
 ```
 cd slides
 docker-compose up --build -d
 ```
+
 Puis ouvrir l'adresse suivante dans un navigateur : http://localhost:8000/
 
 Alternativement, le contenu est lisible dans le fichier `markdown.md` (le mode aperçu de Visual Studio code permet de le lire aisément).

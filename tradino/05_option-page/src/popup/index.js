@@ -48,4 +48,4 @@ btnResetAll.onclick = () => removeStats()
 
 updateStats()
 
-btnOptionPage.onclick = () => chrome.runtime.openOptionsPage(res => sendMessageToContentScript('log', res))
+btnOptionPage.onclick = () => chrome.runtime.openOptionsPage()

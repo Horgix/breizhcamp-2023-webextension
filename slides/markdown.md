@@ -39,15 +39,15 @@ Traque les sites de phishing à ses heures perdues
 
 ---
 
-<!-- .slide: class="plan" data-background="./images/paper-board_o10.png" -->
+# Pourquoi ce talk ?
 
-# Plan
+## L'organisation qu'on vous propose <!-- .element: class="fragment" -->
 
-1. Introduction et mise en place
-2. Le content-script
-3. Menu contextuel
-4. Background script
-5. Browser action (icône)
+* Théorie <!-- .element: class="fragment" -->
+* Pratique <!-- .element: class="fragment" -->
+* Temps de questions <!-- .element: class="fragment" -->
+
+
 
 ---
 
@@ -87,20 +87,15 @@ Traque les sites de phishing à ses heures perdues
 ## Historique des navigateurs
 
 * 1990: **WorldWideWeb** - Premier navigateur
-
 * 1993: **NCSA Mosaic** - Premier navigateur à afficher des images (GIF et XBM)
-
-* 1995: Création d'**Internet Exploreur**
-
+* 1995: Création d'**Internet Explorer**
 * 2000:	**IE** gagne la guerre des navigateurs 😒
-
 * 2003: Création de **Mozilla Firefox**
-
 * 2005: **IE** ⏬ vs **Firefox** ⏫
-
 * 2008: Sortie de **Google Chrome**
-
 * 2012: **Chrome** devient le navigateur le plus utilisé
+
+<img src="images/navigateurs.png" style="width: 800px; margin-top:40px;">
 
 --
 
@@ -177,9 +172,14 @@ Impossible - utiliser Kiwi Browser à la place
 
 > You can install a limited number of extensions from the Recommended Extensions program to add features to Firefox for Android.
 
-* 18 extensions disponibles
+* 18 extensions disponibles 🥳
 
 * Possibilité d'[en ajouter d'autres](https://www.androidpolice.com/install-add-on-extension-mozilla-firefox-android/) via le menu Debug de Firefox bêta
+
+### Safari
+
+Désolés, on n'a pas assez de budget pour acheter un iPhone 😓
+
 
 ---
 
@@ -369,7 +369,7 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 * Permet d'injecter du JS, du CSS
 * Sur des sites/pages précises
-* Déclaration possible au runtime (demande de permissions à la volée*)
+* Déclaration possible au runtime (demande de permissions à la voléee*)
 
 *sauf si l'utilisateur déclenche l'extension (voir [activeTab](https://developer.chrome.com/docs/extensions/mv3/manifest/activeTab/))
 
@@ -424,6 +424,14 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 | Initialisation | `npm run build` | `npm run build:firefox` |
 | Lancement du navigateur | lancer chrome, installer l'extension | `npm run dev:firefox` |
 | Après modif du code | `npm run build` et recharger l'extension | `npm run build:firefox` (Rechargement automatique) |
+
+--
+
+### Cible
+
+<img src="images/content-script-flow.svg" style="width: 1300px;" >
+
+
 
 --
 
@@ -581,13 +589,13 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 <tbody>
 <tr style="background: none;">
 <td>
-<img src="images/ublock-origin-popup.png">
+<img src="images/ublock-origin-popup.png" style="width:500px;">
 </td>
 <td>
 
 * Documentation : [ <img src="images/chrome_icon.svg" style="height: 1em;"> Chrome](), [ <img src="images/firefox_icon.svg" style="height: 1em;"> Firefox](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/user_interface/Popups)
 
-```json
+```json 
 "browser_action": {
   "browser_style": true,
   "default_icon": {
@@ -603,7 +611,7 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 * Communique avec le service worker ou le content-script par envoi de messages
 
-* Attention : dans le cas général, la popup veut envoyer des messages au content-script de l'onglet actif !
+* ⚠️ dans le cas général, la popup veut envoyer des messages au content-script de l'onglet actif !
 
 </td>
 </tr>
@@ -614,7 +622,7 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 ## Modification de notre extension
 
-<img src="images/popup-message-flow.svg" style="width: 1000px;" >
+<img src="images/popup-message-flow.svg" style="width: 1200px;" >
 
 --
 
@@ -627,7 +635,7 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 * Il attend un message l'autorisant à déclencher cette action
 
-* ⚠ L'envoi de message est asynchrone
+* ⚠️ L'envoi de message est asynchrone
 
 
 
@@ -639,7 +647,7 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 * Plus de problème d'autorisation !
 
---
+---
 
 
 
@@ -684,7 +692,7 @@ Pouvoir mémoriser des choses, c'est pratique
   * **sync** : disponible pour tous les instances synchronisées
   * **managed** : [déployé par l'administrateur du domaine](https://developer.mozilla.org/fr/docs/Mozilla/Add-ons/WebExtensions/API/storage/managed) et accessible en lecture seule par l'extension
 
-* ⚠ Lecture et écriture sont asynchrones
+* ⚠️ Lecture et écriture sont asynchrones
 
 --
 
@@ -692,17 +700,22 @@ Pouvoir mémoriser des choses, c'est pratique
 
 ### Stockage de statistiques
 
-* Enregistrer le nombre d'actions faites par notre extension
+* Enregistrer le nombre d'actions faites par notre extension dans chaque page depuis le content-script
 
-* Depuis le background-script et le content-script
-
-* Objectif à terme : pouvoir restituer ces statistiques à l'utilisateur
+* Afficher ces statistiques dans la popup
 
 ```js
 chrome.storage.local.set({ key: value }).then(() => {
   console.log("Value is set");
 });
 ```
+
+--
+
+## Modification de notre extension
+
+![](images/storage-message-flow.svg)
+
 
 --- 
 
@@ -751,15 +764,24 @@ En Anglais _options page_
 * Utilisation typique : lire/écrire des données de configuration dans le local storage
   * Exemple uBlock origin : sélection des listes de blocage
 
-* ⚠ Cette page n'est pas affichée dans un onglet "traditionnel" du navigateur
+* ⚠️ Cette page n'est pas affichée dans un onglet "traditionnel" du navigateur
 
 --
 
 ## Modification de notre extension
 
-* Ajouter une page de configuration qui affiche les statistiques de notre extension, depuis son installation.
+* Ajouter une page de configuration qui permet de configurer les balises dans lesquelles on effectue les remplacements
+
+* Ces balises sont enregistrées dans le local storage
 
 * Créer un raccourci permettant d'ouvrir cette page depuis la popup de l'extension
+
+-- 
+
+## Modification de notre extension
+
+![](images/options-page-flow.svg)
+
 
 ---
 
