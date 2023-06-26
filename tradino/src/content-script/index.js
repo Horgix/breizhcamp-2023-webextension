@@ -26,18 +26,22 @@ async function translate (pattern, action) {
 chrome.runtime.onMessage.addListener(({ type, data }, sender, sendResponse) => {
     switch (type) {
     case 'do_translate_text':
-        translate('p', textToDino)
-        .then(async total => {
-            await setStats('text', total)
-            sendResponse(true)
-        })
+        chrome.storage.local.get({ text_selectors: 'p' })
+            .then(async data => {
+                const selectors = data.text_selectors
+                const total = await translate(selectors, textToDino)
+                await setStats('text', total)
+                sendResponse(true)
+            })
         break
     case 'do_translate_title':
-        translate('h1, h2', titleToDinos)
-        .then(async total => {
-            await setStats('title', total)
-            sendResponse(true)
-        })
+        chrome.storage.local.get({ title_selectors: 'h1, h2' })
+            .then(async data => {
+                const selectors = data.title_selectors
+                const total = await translate(selectors, titleToDinos)
+                await setStats('title', total)
+                sendResponse(true)
+            })
         break
     default:
         // Permet d'envoyer des logs au content-script (debugging)

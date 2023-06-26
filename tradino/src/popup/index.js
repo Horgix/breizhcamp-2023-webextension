@@ -47,3 +47,5 @@ btnTranslateTitle.onclick = () => doTranslate('title')
 btnResetAll.onclick = () => removeStats()
 
 updateStats()
+
+btnOptionPage.onclick = () => chrome.runtime.openOptionsPage()

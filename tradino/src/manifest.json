@@ -20,5 +20,9 @@
     "action": {
       "default_title": "Juste a title !",
       "default_popup": "./popup/index.html"
+    },
+    "options_ui": {
+      "page": "./option-page/index.html",
+      "open_in_tab":true
     }
 }
