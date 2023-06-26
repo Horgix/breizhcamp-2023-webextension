@@ -16,7 +16,7 @@ function _translate (word) {
     } else return baseWord + word.slice(1)
 }
 
-export default async function translateToDino (node) {
+export default async function textToDino (node) {
     const content = []
     for (const word of node.textContent.split(/\s/)) {
         if (word.length <= 1) continue
@@ -27,4 +27,6 @@ export default async function translateToDino (node) {
     if (content.length > 0) {
         node.textContent = content.join(' ')
     }
+
+    return content.length
 }

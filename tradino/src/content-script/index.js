@@ -1,4 +1,4 @@
-import translateToDino from './tradino.js'
+import textToDino from './tradino.js'
 
 export function getTextNode (node) {
     let nodes = []
@@ -14,4 +14,4 @@ export function getTextNode (node) {
 
 const textNodes = Array.from(document.querySelectorAll('p')).map(getTextNode).flat()
 const validTextNodes = textNodes.filter(node => node?.textContent?.length > 0)
-validTextNodes.map(translateToDino)
+translate('p', textToDino)
