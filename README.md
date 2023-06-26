@@ -28,9 +28,15 @@ Alternativement, le contenu est lisible dans le fichier `markdown.md` (le mode a
 | Répertoire | Contenu |
 |-|-|
 | `template` | L'arborescence de base permettant de construire et tester des extensions pour Chrome et Firefox |
-| `content-script` | Trois extensions de base permettant de manipuler le contenu des pages web visitées. Il faut pour cela cliquer sur l'icône de l'extension dans le navigateur, **ou** autoriser l'extension à modifier toutes les pages visitées |
-| `service-worker` | L'extension _tradino_ modifiée avec un `service worker` qui charge les ressources depuis un fichier JSON et répond aux demandes du `content script`
-| `browser-action` | Idem avec l'ajout d'une popup qui propose plusieurs action de remplacement lorsque l'utilisateur clique sur l'icône de l'extension
-| `storage` | Idem, et le `content script` stocke ses statistiques de remplacement dans le _local storage_ de l'extension
-| `options-page` | Ajout d'une page de configuration de l'extension, qui affiche toutes les statistiques de remplacement à partir du _local storage_
+| `data` | Les ressources utilisées dans la suite de la formation |
+
+Le dossier `tradino` contient toutes les corrections proposées pour les différentes étapes, et plus précisément :
+
+| Répertoire | Contenu |
+|-|-|
+| `01_content-script` | Trois extensions de base permettant de manipuler le contenu des pages web visitées. Il faut pour cela cliquer sur l'icône de l'extension dans le navigateur, **ou** autoriser l'extension à modifier toutes les pages visitées |
+| `02_service-worker` | L'extension _tradino_ modifiée avec un `service worker` qui charge les ressources depuis un fichier JSON et répond aux demandes du `content script`
+| `03_browser-action` | Idem avec l'ajout d'une popup qui propose plusieurs action de remplacement lorsque l'utilisateur clique sur l'icône de l'extension
+| `04_storage` | Idem, et le `content script` stocke ses statistiques de remplacement dans le _local storage_ de l'extension
+| `05_options-page` | Ajout d'une page de configuration de l'extension, qui affiche toutes les statistiques de remplacement à partir du _local storage_
 
