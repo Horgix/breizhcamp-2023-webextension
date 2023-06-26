@@ -18,9 +18,13 @@ Aurélien Partiot, Florent Vuillemin <!-- .element: class="author" -->
 <img src="images/aurelien.jpg" style="height: 150px;">
 
 
-* 
-* 
-* 
+Javascript, Python, IA, React
+
+Ne supporte pas Elm !
+
+<a href="https://linkedin.com/in/aurelien-partiot-21ab1b111">
+	<img src="images/linkedin.png" style="height: 1em;"> @aurelien-partiot
+</a>
 
 -- 
 
