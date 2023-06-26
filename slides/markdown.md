@@ -382,7 +382,7 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 | DinoFacts | Tradino |
 |-|-|
-| Ajoute des anecdotes amusantes concernant les dinosaures sur chaque page |  Affiche tous les textes de la page en langage Dino et remplace les titres par des paroles de [Dinos](https://fr.wikipedia.org/wiki/Dinos_(rappeur)) |
+| Ajoute des anecdotes amusantes concernant les dinosaures sur chaque page |  Affiche tous les textes de la page en langage Dino et remplace les titres |
 
 **Remarques :** 
 * Ces deux extensions fonctionnent (pour le moment) sans exploiter les API du navigateur.
@@ -390,9 +390,15 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 --
 
-### Aucun vrai dinosaure n'a été maltraité pour la création de cette formation
+## Transformation du texte en Dino
 
-<iframe width="1200" height="600" src="https://www.youtube-nocookie.com/embed/EBEWGesz3EQ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+[<img src="images/human2dino.png" >]()
+
+--
+
+## Transformation des titres en Dinos
+
+[<img src="images/human2dinos.png" >]()
 
 --
 
@@ -939,7 +945,3 @@ const puppeteerArgs = [
   '--show-component-extension-options',
 ];
 ```
-
---
-
-## 
