@@ -231,7 +231,7 @@ Désolés, on n'a pas assez de budget pour acheter un iPhone 😓
 * Linux
 * Docker
 
-### Git
+### Git (facultatif)
 
 Selon votre système d'exploitation
 
@@ -253,7 +253,7 @@ ou : wget https://github.com/Nuuky/breizhcamp-2023-webextension/archive/refs/hea
 ### Installer les packages node
 
 ```sh
-cd breizhcamp-2023-webextension/0-template
+cd breizhcamp-2023-webextension/template
 npm install
 ```
 
@@ -382,27 +382,12 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 
 ## Le content-script
 
-### Définir le rôle de notre extension
+### Le rôle de notre extension
 
-| DinoFacts | Tradino |
-|-|-|
-| Ajoute des anecdotes amusantes concernant les dinosaures sur chaque page |  Affiche tous les textes de la page en langage Dino et remplace les titres |
+> Afficher tous les textes de la page en langage Dino
 
-**Remarques :** 
-* Ces deux extensions fonctionnent (pour le moment) sans exploiter les API du navigateur.
-* Les corrigés sont donnés pour Tradino
+![](images/human2dino.png)
 
---
-
-## Transformation du texte en Dino
-
-[<img src="images/human2dino.png" >]()
-
---
-
-## Transformation des titres en Dinos
-
-[<img src="images/human2dinos.png" >]()
 
 --
 
@@ -499,6 +484,14 @@ Alors c'est l'occasion de customiser votre `manifest.json` !
 * L'endroit idéal pour aiguiller les messages et effectuer des actions globales à l'extension :
 	* télécharger des ressources
 	* intercepter des requêtes HTTP
+
+--
+
+## Modification de notre extension
+
+### Transformation des titres en Dinos
+
+![](images/human2dinos.png)
 
 --
 
