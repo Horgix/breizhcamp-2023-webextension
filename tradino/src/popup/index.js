@@ -26,16 +26,19 @@ async function sendMessageToContentScript (type, data = null) {
 }
 
 /**
- * Met à jours les stats pour le site actuel
+ * Met à jour les stats pour le site actuel
  */
 async function updateStats () {
     const tab = await getActiveTab()
 
-    /**
-     * TODO:
-     * - Utiliser l'API chrome.storage pour récupérer les stats du site actuel
-     * - Remplacer le contenue de textCounter et titleCounter avec les résultats
-     */
+    const textKey = tab.url + '::' + 'text'
+    const titleKey = tab.url + '::' + 'title'
+
+    chrome.storage.local.get({[textKey]: 0, [titleKey]: 0}).then((result) => {
+        textCounter.textContent = result[textKey]
+        titleCounter.textContent = result[titleKey]
+    })
+    .catch(err => sendMessageToContentScript('error', err))
 }
 
 /**
@@ -44,10 +47,9 @@ async function updateStats () {
 async function removeStats () {
     const tab = await getActiveTab()
 
-    /**
-     * TODO:
-     * - Utiliser l'API chrome.storage pour supprimer les stats du site actuel
-     */
+    const textKey = tab.url + '::' + 'text'
+    const titleKey = tab.url + '::' + 'title'
+    await chrome.storage.local.set({[textKey]: 0, [titleKey]: 0})
 
     updateStats()
 }
