@@ -24,9 +24,9 @@
     },
     "action": {
       "default_title": "Juste a title !",
-      "default_popup": "./popup/index.html"
+      "default_popup": "popup/index.html"
     },
-    "option_ui": {
+    "options_ui": {
       "page": "option-page/index.html",
       "open_in_tab": true
     }
