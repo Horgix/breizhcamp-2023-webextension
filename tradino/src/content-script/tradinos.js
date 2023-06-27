@@ -1,4 +1,3 @@
-
 /**
  * Remplace un texte par une phrase de Dinos
  * @param {Node} node Le noeud texte à remplacer

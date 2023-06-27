@@ -31,17 +31,17 @@ chrome.runtime.onMessage.addListener(({ type, data }, sender, sendResponse) => {
     switch (type) {
     case 'do_translate_text':
         translate('p', textToDino)
-        .then(async total => {
-            await setStats('text', total)
-            sendResponse(true)
-        })
+            .then(async total => {
+                await setStats('text', total)
+                sendResponse(true)
+            })
         break
     case 'do_translate_title':
         translate('h1, h2', titleToDinos)
-        .then(async total => {
-            await setStats('title', total)
-            sendResponse(true)
-        })
+            .then(async total => {
+                await setStats('title', total)
+                sendResponse(true)
+            })
         break
     default:
         // Permet d'envoyer des logs au content-script (debugging)
