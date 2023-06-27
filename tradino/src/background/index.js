@@ -18,3 +18,11 @@ function getRandomTitle () {
  * - Structurez vos messages ex: {type: Le type du message, data: La donnée à traiter}
  * - Utilisez un switch afin de faciliter l'implémentation de plusieurs type de messages
  */
+chrome.runtime.onMessage.addListener(({type, data}, sender) => {
+    console.log(`Got message ${type} with data ${data} from ${sender.tab.id}`)
+
+    switch (type) {
+        case 'translate_to_dinos':
+            return Promise.resolve(getRandomTitle())
+    }
+})
