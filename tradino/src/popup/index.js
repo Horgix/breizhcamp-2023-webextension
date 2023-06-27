@@ -67,5 +67,5 @@ updateStats()
 
 /**
  * TODO:
- * - Faire en sorte d'ouvrire la page d'option 'onclick' du 'btnOptionPage'
+ * - Utiliser la méthode openOptionPage de l'API chrome.runtime pour ouvrir la page d'option 'onclick' du 'btnOptionPage' 
  */

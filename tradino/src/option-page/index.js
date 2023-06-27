@@ -8,7 +8,7 @@ const inputTitleSelectors = document.querySelector('input[name=title_selectors]'
 function handleOptions ({ target }) {
     /**
      * TODO:
-     * - Utiliser l'API chrome.storage pour enregistrer le changement
+     * - Utiliser l'API chrome.storage.local pour enregistrer le changement
      * TIPS:
      * - L'argument target comprend plusieurs valeurs:
      *      - name: Le nom donné à la balise (ici 'text_selectors' ou 'title_selectors')
