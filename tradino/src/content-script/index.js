@@ -1,5 +1,5 @@
 const html = `
-<h1>Ready !</h1>
+<h1>Ready ! 😎</h1>
 <img style="width: 600px" src='${chrome.runtime.getURL('data/jurassic-park.jpg')}' />
 <p>
 Disneyland aussi a eu quelques difficultés à ses débuts !<br>
