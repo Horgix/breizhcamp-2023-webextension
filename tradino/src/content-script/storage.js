@@ -5,10 +5,11 @@
  * @returns
  */
 export async function setStats (type, value) {
-    const storageKey = document.location.href + '::' + type
+    const storageKey = document.location.href
 
-    const data = await chrome.storage.local.get({ [storageKey]: 0 })
-    return chrome.storage.local.set({ [storageKey]: data[storageKey] + value })
+    const data = await chrome.storage.local.get({ [storageKey]: { text: 0, title: 0 } })
+    data[storageKey][type] += value
+    return chrome.storage.local.set({ [storageKey]: data[storageKey] })
         .then(() => console.log('ok'))
         .catch(console.error)
 }
