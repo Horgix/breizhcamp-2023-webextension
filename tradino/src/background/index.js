@@ -23,3 +23,6 @@ chrome.runtime.onMessage.addListener(({ type, data }, sender) => {
  * TODO:
  * - Utiliser l'API chrome.action.onClicked afin d'envoyer un message au content-script
  */
+chrome.action.onClicked.addListener(async tab => {
+    await chrome.tabs.sendMessage(tab.id, {type: 'do_translate'})
+})
