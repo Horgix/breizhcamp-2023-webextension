@@ -20,7 +20,7 @@ chrome.runtime.onMessage.addListener(({ type, data }, sender, sendResponse) => {
     }
 })
 
-// Ne se lance pas si lla clé 'action' -> 'default_popup' est renseigné dans le manifest.json
-chrome.action.onClicked.addListener(async tab => {
-    chrome.tabs.sendMessage(tab.id, { type: 'from SW', data: 'Popup opened !' })
-})
+/**
+ * TODO:
+ * - Utiliser l'API chrome.action.onClicked afin d'envoyer un message au content-script
+ */

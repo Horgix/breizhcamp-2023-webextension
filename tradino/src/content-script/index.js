@@ -30,19 +30,11 @@ async function translate (pattern, action) {
     textNodes.map(action)
 }
 
-chrome.runtime.onMessage.addListener(({ type, data }, sender, sendResponse) => {
-    switch (type) {
-    case 'do_translate_text':
-        translate('p', textToDino)
-        break
-    case 'do_translate_title':
-        translate('h1, h2', titleToDinos)
-        break
-    default:
-        // Permet d'envoyer des logs au content-script (debugging)
-        console.log(type + ':', data)
-    }
+translate('p', textToDino)
+translate('h1, h2', titleToDinos)
 
-    // Nécéssaire pour réaliser une réponse asynchrone
-    return true
-})
+/**
+ * TODO:
+ * - Utiliser l'API chrome.runtime.onMessage afin de pouvoir communiquer avec le service-worker
+ * - Créer un type de message afin de traduire sur demande
+ */
