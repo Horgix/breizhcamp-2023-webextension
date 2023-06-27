@@ -9,13 +9,12 @@ function getRandomTitle () {
     return lyrics[lyricIndex]
 }
 
-chrome.runtime.onMessage.addListener(({ type, data }, sender, sendResponse) => {
-    console.debug(`Message from ${(sender.tab) ? 'content-script' : 'extension'} of type: ${type}`)
-
-    switch (type) {
-    case 'translate_to_dinos':
-        sendResponse(getRandomTitle())
-        break
-    default:
-    }
-})
+/**
+ * TODO:
+ * - Utiliser l'API chrome.runtime.onMessage afin de communiquer avec le content-script
+ * - Créer un chemin qui retourne le résultat de getRandomTitle
+ *
+ * TIPS:
+ * - Structurez vos messages ex: {type: Le type du message, data: La donnée à traiter}
+ * - Utilisez un switch afin de faciliter l'implémentation de plusieurs type de messages
+ */
