@@ -21,5 +21,9 @@
     "background": {
       "service_worker": "background/index.js",
       "type": "module"
+    },
+    "action": {
+      "default_title": "Juste a title !",
+      "default_popup": "./popup/index.html"
     }
 }
