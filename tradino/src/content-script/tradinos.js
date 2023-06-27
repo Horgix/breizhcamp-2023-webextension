@@ -5,7 +5,7 @@
 export default async function titleToDinos (node) {
     /**
      * TODO
-     * - Envoyer un message au service-worker afin de récupérer un titre.
+     * - Envoyer un message au service-worker avec chrome.runtime.sendMessage() afin de récupérer un titre (attention, c'est une fonction async).
      * - Changer le textContent de la node avec le titre récupéré
      */
 }
