@@ -5,15 +5,12 @@ const btnTranslateTitle = document.querySelector('#translate_title')
  * Récupère l'onglet actif
  * @returns {*} L'onglet actif de la fenêtre actuel
  */
-async function getActiveTab () {
-    /**
-     * TODO:
-     * - Utiliser l'API chrome.tabs afin de récupérer l'onglet actif
-     * TIPS:
-     * - Ne pas oublier d'ajouter la popup dans le manifest.json
-     * - Même si on attend qu'un seul onglet, l'API retourne un liste
-     */
-}
+async function getActiveTab() {
+    let queryOptions = { active: true, currentWindow: true };
+    // `tab` will either be a `tabs.Tab` instance or `undefined`.
+    let [tab] = await chrome.tabs.query(queryOptions);
+    return tab;
+  }
 
 /**
  * Envois un message au content-script
