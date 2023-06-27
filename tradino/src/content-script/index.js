@@ -2,6 +2,11 @@ import textToDino from './tradino.js'
 import titleToDinos from './tradinos.js'
 import { setStats } from './storage.js'
 
+/**
+ * Parcourt itérativement tous les descendants du noeud donné à la recherche de noeuds de type texte
+ * @param {*} node Le noeud de départ
+ * @returns Une liste de noeuds de type texte dont le contenu n'est pas vide
+ */
 export function getTextNode (node) {
     let nodes = []
     if (node.nodeType === Node.TEXT_NODE) {
