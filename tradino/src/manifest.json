@@ -23,6 +23,7 @@
       "type": "module"
     },
     "action": {
-      "default_title": "Grrr"
+      "default_title": "Grrr",
+      "default_popup": "popup/index.html"
     }
 }
