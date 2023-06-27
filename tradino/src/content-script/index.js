@@ -32,7 +32,7 @@ async function translate (pattern, action) {
     return total
 }
 
-chrome.runtime.onMessage.addListener(({ type, data }, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener(({ type, data }, sender) => {
     switch (type) {
     case 'do_translate_text':
         /**
@@ -41,24 +41,19 @@ chrome.runtime.onMessage.addListener(({ type, data }, sender, sendResponse) => {
          * TIPS:
          * - Ne pas oublier de mettre une valeur par défaut
          */
-        translate('p', textToDino)
+        return translate('p', textToDino)
             .then(async total => {
                 await setStats('text', total)
-                sendResponse(true)
+                return true
             })
-        break
     case 'do_translate_title':
-        translate('h1, h2', titleToDinos)
+        return translate('h1, h2', titleToDinos)
             .then(async total => {
                 await setStats('title', total)
-                sendResponse(true)
+                return true
             })
-        break
     default:
         // Permet d'envoyer des logs au content-script (debugging)
         console.log(type + ':', data)
     }
-
-    // Nécéssaire pour réaliser une réponse asynchrone
-    return true
 })
