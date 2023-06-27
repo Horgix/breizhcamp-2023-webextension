@@ -33,7 +33,7 @@ async function updateStats () {
 
     /**
      * TODO:
-     * - Utiliser l'API chrome.storage pour récupérer les stats du site actuel
+     * - Utiliser l'API chrome.storage.local pour récupérer les stats du site actuel
      * - Remplacer le contenue de textCounter et titleCounter avec les résultats
      */
 }
@@ -46,7 +46,7 @@ async function removeStats () {
 
     /**
      * TODO:
-     * - Utiliser l'API chrome.storage pour supprimer les stats du site actuel
+     * - Utiliser l'API chrome.storage.local pour supprimer les stats du site actuel
      */
 
     updateStats()

@@ -7,7 +7,7 @@
 export async function setStats (type, value) {
     /**
      * TODO:
-     * - Utiliser l'API chrome.storage pour enregistrer la donnée
+     * - Utiliser l'API chrome.storage.local pour enregistrer la donnée
      * TIPS:
      * - L'utilisation de l'url dans la clé permet d'avoir des stats par site plutôt que globale
      * - Etant dans le contexte d'une page web, l'url peut être récupéré avec document.location.href
