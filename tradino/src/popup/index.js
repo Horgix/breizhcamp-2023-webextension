@@ -32,7 +32,7 @@ async function updateStats () {
     const tab = await getActiveTab()
     const storageKey = tab.url + '::'
     const textStat = await chrome.storage.local.get({ [storageKey + 'text']: 0 })
-    const titleStat = await chrome.storage.local.get({ [storageKey + 'text']: 0 })
+    const titleStat = await chrome.storage.local.get({ [storageKey + 'title']: 0 })
     textCounter.textContent = textStat[storageKey + 'text']
     titleCounter.textContent = titleStat[storageKey + 'title']
 }
