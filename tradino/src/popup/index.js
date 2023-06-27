@@ -6,10 +6,8 @@ const btnTranslateTitle = document.querySelector('#translate_title')
  * @returns {*} L'onglet actif de la fenêtre actuel
  */
 async function getActiveTab() {
-    let queryOptions = { active: true, currentWindow: true };
-    // `tab` will either be a `tabs.Tab` instance or `undefined`.
-    let [tab] = await chrome.tabs.query(queryOptions);
-    return tab;
+    const [tab] = await chrome.tabs.query({ active: true, currentWindow: true });
+    return tab
   }
 
 /**
@@ -23,8 +21,8 @@ async function sendMessageToContentScript (type, data = null) {
 
     /**
      * TODO:
-     * - Utiliser l'API chrome.tabs afin d'envoyer le message {type, data}
-     * - La fonctino doit retourner la réponse
+     * - Utiliser la méthode sendMessage de l'API chrome.tabs afin d'envoyer le message {type, data}
+     * - La fonction doit retourner la réponse
      */
 }
 

@@ -21,5 +21,5 @@ chrome.runtime.onMessage.addListener(({ type, data }, sender) => {
 
 /**
  * TODO:
- * - Utiliser l'API chrome.action.onClicked afin d'envoyer un message au content-script
+ * - Utiliser l'API chrome.action.onClicked (ne pas oublier addListener) afin d'envoyer un message au content-script
  */
