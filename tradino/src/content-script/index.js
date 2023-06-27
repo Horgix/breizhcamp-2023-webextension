@@ -14,6 +14,11 @@ export function getTextNode (node) {
     return nodes
 }
 
+/**
+ * Applique la fonction de traduction donnée sur tous les noeuds d'un sélecteur CSS
+ * @param {string} pattern Le noeud de départ
+ * @param {function} action Le noeud de départ
+ */
 async function translate (pattern, action) {
     const textNodes = Array.from(document.querySelectorAll(pattern)).map(getTextNode).flat()
     const validTextNodes = textNodes.filter(node => node?.textContent?.length > 0)
