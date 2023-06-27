@@ -31,10 +31,12 @@ async function sendMessageToContentScript (type, data = null) {
 async function updateStats () {
     const tab = await getActiveTab()
     const storageKey = tab.url + '::'
-    const textStat = await chrome.storage.local.get({ [storageKey + 'text']: 0 })
-    const titleStat = await chrome.storage.local.get({ [storageKey + 'title']: 0 })
-    textCounter.textContent = textStat[storageKey + 'text']
-    titleCounter.textContent = titleStat[storageKey + 'title']
+    const stats = await chrome.storage.local.get({ 
+        [storageKey + 'text']: 0, 
+        [storageKey + 'title']: 0
+    })
+    textCounter.textContent = stats[storageKey + 'text']
+    titleCounter.textContent = stats[storageKey + 'title']
 }
 
 /**
@@ -43,8 +45,10 @@ async function updateStats () {
 async function removeStats () {
     const tab = await getActiveTab()
     const storageKey = tab.url + '::'
-    await chrome.storage.local.set({ [storageKey + 'text']: 0 })
-    await chrome.storage.local.set({ [storageKey + 'title']: 0 })
+    await chrome.storage.local.set({ 
+        [storageKey + 'text']: 0,
+        [storageKey + 'title']: 0
+    })
     updateStats()
 }
 
