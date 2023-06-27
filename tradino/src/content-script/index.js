@@ -35,19 +35,21 @@ async function translate (pattern, action) {
 chrome.runtime.onMessage.addListener(({ type, data }, sender, sendResponse) => {
     switch (type) {
     case 'do_translate_text':
-        chrome.storage.local.get({ text_selectors: 'p' })
-            .then(async data => {
-                const selectors = data.text_selectors
-                const total = await translate(selectors, textToDino)
+        /**
+         * TODO:
+         * - Utiliser les selecteurs enregistré dans le stockage local avec l'API chrome.storage.local
+         * TIPS:
+         * - Ne pas oublier de mettre une valeur par défaut
+         */
+        translate('p', textToDino)
+            .then(async total => {
                 await setStats('text', total)
                 sendResponse(true)
             })
         break
     case 'do_translate_title':
-        chrome.storage.local.get({ title_selectors: 'h1, h2' })
-            .then(async data => {
-                const selectors = data.title_selectors
-                const total = await translate(selectors, titleToDinos)
+        translate('h1, h2', titleToDinos)
+            .then(async total => {
                 await setStats('title', total)
                 sendResponse(true)
             })
