@@ -9,13 +9,12 @@ function getRandomTitle () {
     return lyrics[lyricIndex]
 }
 
-chrome.runtime.onMessage.addListener(({ type, data }, sender, sendResponse) => {
+chrome.runtime.onMessage.addListener(({ type, data }, sender) => {
     console.debug(`Message from ${(sender.tab) ? 'content-script' : 'extension'} of type: ${type}`)
 
     switch (type) {
     case 'translate_to_dinos':
-        sendResponse(getRandomTitle())
-        break
+        return Promise.resolve(getRandomTitle())
     default:
     }
 })
