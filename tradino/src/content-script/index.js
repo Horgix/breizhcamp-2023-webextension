@@ -24,9 +24,4 @@ export function getTextNode (node) {
  * rechercher tous leurs descendants de type texte
  */
 const textNodes = Array.from(document.querySelectorAll('p')).map(getTextNode).flat()
-
-
-/**
- * TODO
- * - Appliquer la traduction sur chaque élément de la liste textNodes grâce à la fonction textToDino()
- */
+textNodes.map(textToDino)
