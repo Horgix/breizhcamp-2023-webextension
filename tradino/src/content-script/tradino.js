@@ -1,5 +1,10 @@
 import grrosettaStone from '../data/grrosetta_stone.json'
 
+/**
+ * Traduit un mot en langage dinosaure
+ * @param {*} word Le mot à traduire
+ * @returns Le mot traduit
+ */
 function _translate (word) {
     const isUpper = word.slice(0, 1) === word.slice(0, 1).toUpperCase()
     const baseWord = isUpper ? 'Gr' : 'gr'
@@ -16,6 +21,11 @@ function _translate (word) {
     } else return baseWord + word.slice(1)
 }
 
+/**
+ * Traduit le contenu textuel d'un noeud du DOM en langage dinosaure
+ * @param {*} node Le noeud dans lequel remplacer
+ * @returns La longueur du texte après remplacement
+ */
 export default async function textToDino (node) {
     const content = []
     for (const word of node.textContent.split(/\s/)) {

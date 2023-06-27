@@ -1,5 +1,9 @@
 import lyrics from '../data/dinos.json'
 
+/**
+ * Sélectionne aléatoirement une ligne du fichier dinos.json
+ * @returns Une ligne du fichier dinos.json
+ */
 function getRandomTitle () {
     const lyricIndex = Math.floor(Math.random() * lyrics.length)
     return lyrics[lyricIndex]
