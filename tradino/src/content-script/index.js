@@ -17,5 +17,11 @@ export function getTextNode (node) {
     return nodes
 }
 
+/**
+ * TODO
+ * - Sélectionner tous les éléments du DOM de type paragraphe (balise HTML <p>)
+ * - Rechercher tous leurs descendants de type texte
+ * - Appliquer la traduction sur tous ces noeuds grâce à la fonction textToDino()
+ */
 const textNodes = Array.from(document.querySelectorAll('p')).map(getTextNode).flat()
-translate('p', textToDino)
+
